@@ -1,0 +1,43 @@
+use Libraries.Game.Game
+
+// A text based game to escape a TSBVI dorm
+
+class Main is Game
+    Character character
+    Room startRoom
+
+    action Main
+        StartGame()
+    end
+
+    action CreateGame
+InitializeCharacter()
+InitializeRooms()
+    end
+
+action InitializeRooms
+startRoom:SetName("Your bedroom")
+end
+
+action InitializeCharacter
+character:SetName("Sam")
+end
+
+number second = 0.0
+    action Update(number seconds)
+// every second, we want to do stuff
+// so let's find out when each second goes by instead of each frame, 
+// then we'll call an action to do those things that must occur each second
+
+second = second+seconds
+if second >= 1.0
+second = 0.0
+SecondPassed()
+end
+
+    end
+
+action SecondPassed
+character:RunChecks()
+end
+end

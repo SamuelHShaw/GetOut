@@ -1,0 +1,57 @@
+use Libraries.Containers.Array
+class Character 
+text name = ""
+integer energy = 0
+boolean wearingClothing = false
+number intoxication = 0.0  //intoxication will be used as a modifer in in game games, lol. increase speeds or wobbleyness of objects and accuracy
+      
+Array<Item> items
+
+action AddItem(Item item)
+items:Add(item)
+end
+
+action GetItems returns Array<Item>
+return items
+end
+
+action GetName() returns text
+    return name
+end
+
+action SetName(text n)
+    name = n
+end
+
+action GetEnergy() returns integer
+    return energy
+end
+
+action SetEnergy(integer e)
+    energy = e
+end
+
+action SetWearingClothing(boolean c)
+    wearingClothing = c
+end
+
+action GetWearingClothing() returns boolean
+    return wearingClothing
+end
+
+action SetIntoxication(number i)
+    if i >= 1.0
+        intoxication = 1.0
+    elseif i <= 0.0
+        intoxication = 0.0
+    else
+        //do nothing
+    end
+end
+
+action RunChecks
+// this is where we'll do stuff if thursty, low energy, drunk
+
+end
+
+end

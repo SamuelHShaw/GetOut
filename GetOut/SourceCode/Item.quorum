@@ -1,0 +1,14 @@
+use Libraries.Interface.Controls.Button
+
+class Item is Button
+boolean canBePickedUp = false
+
+action GetCanBePickedUp returns boolean
+return canBePickedUp
+end
+
+action SetCanBePickedUp(boolean canBePickedUp)
+me:canBePickedUp = canBePickedUp
+end
+
+end
