@@ -15,6 +15,7 @@ class Main is Game
     action CreateGame
         InitializeCharacter()
         InitializeRooms()
+        
     end
 
 action MakeRoom(text name, text shortDescription, text longDescription) returns Room
@@ -34,14 +35,13 @@ action MakeItem (text name, text description, text role) returns Item
 end
 
 action InitializeRooms
-
+//create first room to develop layouts, will need to dev rooms in reverse order to provide exits for the rooms
 Room roomr
 roomr = MakeRoom("bedroom", "short description", "longDescription")
-Item item1
+RoomItem item1
 item1 = MakeItem("fav mug","this is the description","cup")
-
 roomr:AddItem(item1)
-//rooms:Add(roomr)
+rooms:Add(roomr)
 
 end
 
