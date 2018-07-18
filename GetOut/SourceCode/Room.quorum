@@ -1,4 +1,7 @@
 use Libraries.Containers.Array
+use Libraries.Game.Graphics.Drawable
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Layouts.Layout
 
 class Room
 Array<Room> exits
@@ -6,6 +9,38 @@ Array<Item> items
 text name = ""
 text shortDescription = ""
 text longDescription = ""
+
+on create
+    //add layouts:TextBoxLayout, PaintingLayout, buttonFlowLayout
+//textBoxLayout
+    Layout textBoxLayout    
+    //size of item in relation to window size
+    textBoxLayout:SetPercentageHeight(0.5)
+    textBoxLayout:SetPercentageWidth(0.25)
+    //placement of item in relation to window size
+    textBoxLayout:SetPercentageX(0.1)
+    textBoxLayout:SetPercentageY(1)
+    //set origin for item
+    textBoxLayout:SetPercentageOriginX(0)
+    textBoxLayout:SetPercentageOriginY(1)
+
+//drawable text box
+Drawable gameTextBox
+gameTextBox:LoadRectangle(200,400)
+gameTextBox:SetPosition(100,800)
+Label gameText
+gameText:SetText("You wake up in a bedroom")
+gameTextBox:Add(gameText)
+gameTextBox:AddLayout(textBoxLayout)
+//Add(gameTextBox) 
+
+//drawable painting
+//Drawable painting
+//Texture texture
+//texture:LoadFromFile("assets/elenaPainting.jpg")
+//painting:Load
+    //items:buttons, first just add a button to a layout, then cycle through items and add 
+end
 
 action GetName returns text
 return name
