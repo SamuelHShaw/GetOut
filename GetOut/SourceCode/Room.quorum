@@ -2,6 +2,8 @@ use Libraries.Containers.Array
 use Libraries.Game.Graphics.Drawable
 use Libraries.Game.Graphics.Label
 use Libraries.Interface.Layouts.Layout
+use Libraries.Game.Graphics.Texture
+use Libraries.Game.Graphics.Color
 
 class Room is Drawable
 Array<Room> exits
@@ -9,6 +11,7 @@ Array<RoomItem> items
 text name = ""
 text shortDescription = ""
 text longDescription = ""
+Color color
 
 on create
     //add layouts:TextBoxLayout, PaintingLayout, buttonFlowLayout
@@ -19,7 +22,7 @@ on create
     textBoxLayout:SetPercentageWidth(0.25)
     //placement of item in relation to window size
     textBoxLayout:SetPercentageX(0.1)
-    textBoxLayout:SetPercentageY(1)
+    textBoxLayout:SetPercentageY(0.9)
     //set origin for item
     textBoxLayout:SetPercentageOriginX(0)
     textBoxLayout:SetPercentageOriginY(1)
@@ -32,14 +35,30 @@ Label gameText
 gameText:SetText("You wake up in a bedroom")
 gameTextBox:Add(gameText)
 gameTextBox:AddLayout(textBoxLayout)
-Add(gameTextBox)
+Add(gameTextBox) 
+
+//painting layout
+Layout paintingLayout
+paintingLayout:SetPercentageWidth(0.3)
+paintingLayout:SetPercentageHeight(0.5)
+paintingLayout:SetPercentageX(0.9)
+paintingLayout:SetPercentageY(0.9)
+paintingLayout:SetPercentageOriginX(1)
+paintingLayout:SetPercentageOriginY(1)
 
 //drawable painting
-//Drawable painting
-//Texture texture
-//texture:LoadFromFile("assets/elenaPainting.jpg")
-//painting:Load
-    //items:buttons, first just add a button to a layout, then cycle through items and add 
+Drawable painting
+Texture texture
+painting:LoadRectangle(200,800,color:White())
+texture:LoadFromFile("assets/elenaPainting.jpg")
+painting:Load(texture)
+painting:SetPosition(200,800)
+painting:AddLayout(paintingLayout)
+Add(painting)
+
+painting:Resize()
+gameTextBox:Resize()
+
 end
 
 action GetName returns text
