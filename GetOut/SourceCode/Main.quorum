@@ -1,4 +1,5 @@
 use Libraries.Game.Game
+use Libraries.Interface.Layouts.Layout
 use Libraries.Containers.HashTable
 
 // A text based game to escape a TSBVI dorm
@@ -35,6 +36,11 @@ end
 
 action InitializeRooms
 Room room
+Layout roomLayout
+roomLayout:SetPercentageHeight(1.0)
+roomLayout:SetPercentageWidth(1.0)
+room:AddLayout(roomLayout)
+
 
 //create first room to develop layouts, will need to dev rooms in reverse order to provide exits for the rooms
 
