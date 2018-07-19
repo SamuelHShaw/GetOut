@@ -13,7 +13,7 @@ text shortDescription = ""
 text longDescription = ""
 Color color
 
-on create
+action Render
     //add layouts:TextBoxLayout, PaintingLayout, buttonFlowLayout
 //textBoxLayout
     Layout textBoxLayout    

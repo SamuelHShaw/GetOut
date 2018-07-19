@@ -42,7 +42,7 @@ room = MakeRoom("bedroom", "short description", "longDescription")
 RoomItem item
 item = MakeItem("fav mug","this is the description","cup")
 room:AddRoomItem(item)
-rooms:Add(room:GetName(), room)
+room:Render()
 
 // add last made room to game
 Add(room)
@@ -69,4 +69,10 @@ end
 action SecondPassed
 character:RunChecks()
 end
+
+action Add(Room r)
+r:Render()
+parent:Game:Add(r)
+end
+
 end
