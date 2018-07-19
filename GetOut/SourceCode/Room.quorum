@@ -74,10 +74,10 @@ painting:Resize()
     FlowLayout itemFlow
     itemFlow:SetFrontPadding(true)
     itemFlow:SetPadding(50) 
-    itemFlow:SetPercentageWidth(0.5)
+    itemFlow:SetPercentageWidth(0.4)
     itemFlow:SetPercentageHeight(1.0)
-    itemFlow:SetPercentageX(0.1)
-    itemFlow:SetPercentageY(0.1)
+//    itemFlow:SetPercentageX(0.1)
+//    itemFlow:SetPercentageY(0.1)
 
     Drawable itemArea
     itemArea:LoadFilledRectangle(100,50,color:White())
@@ -114,7 +114,6 @@ end
     exitFlowLayout:SetPercentageWidth(0.25)
     exitFlowLayout:SetPercentageHeight(1.0)
     exitFlowLayout:SetPercentageX(0.6)
-    exitFlowLayout:SetPercentageY(0.1)
 
     Drawable exitArea
     exitArea:LoadFilledRectangle(100,50,color:White())
@@ -143,12 +142,10 @@ end
 //ItemandExit flowlayout and drawable
 
     FlowLayout itemAndExitFlowLayout
-    itemAndExitFlowLayout:SetFrontPadding(true)
-    itemAndExitFlowLayout:SetPadding(50) 
+//    itemAndExitFlowLayout:SetFrontPadding(true)
+//    itemAndExitFlowLayout:SetPadding(50) 
     itemAndExitFlowLayout:SetPercentageWidth(0.5)
     itemAndExitFlowLayout:SetPercentageHeight(0.25)
-    itemAndExitFlowLayout:SetPercentageX(0.6)
-    itemAndExitFlowLayout:SetPercentageY(0.1)
 
     Drawable itemAndExitArea
     itemAndExitArea:LoadFilledRectangle(500,100,color:Blue())
