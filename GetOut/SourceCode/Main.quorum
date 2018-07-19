@@ -26,8 +26,8 @@ action MakeRoom(text name, text shortDescription, text longDescription) returns 
     return r
 end
 
-action MakeItem (text name, text description, text role) returns Item
-    Item i
+action MakeItem (text name, text description, text role) returns RoomItem
+    RoomItem i
     i:SetName(name)
     i:SetDescription(description)
     i:SetRole(role)

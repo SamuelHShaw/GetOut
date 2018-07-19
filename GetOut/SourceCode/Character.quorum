@@ -1,17 +1,18 @@
 use Libraries.Containers.Array
+
 class Character 
 text name = ""
 integer energy = 0
 boolean wearingClothing = false
 number intoxication = 0.0  //intoxication will be used as a modifer in in game games, lol. increase speeds or wobbleyness of objects and accuracy
       
-Array<Item> items
+Array<RoomItem> items
 
-action AddItem(Item item)
+action AddItem(RoomItem item)
 items:Add(item)
 end
 
-action GetItems returns Array<Item>
+action GetItems returns Array<RoomItem>
 return items
 end
 

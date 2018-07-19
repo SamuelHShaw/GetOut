@@ -5,7 +5,7 @@ use Libraries.Interface.Layouts.Layout
 
 class Room
 Array<Room> exits
-Array<Item> items
+Array<RoomItem> items
 text name = ""
 text shortDescription = ""
 text longDescription = ""
@@ -58,11 +58,11 @@ action GetExits returns Array<Room>
 return exits
 end
 
-action AddItem(Item item)
+action AddItem(RoomItem item)
 items:Add(item)
 end
 
-action GetItems returns Array<Item>
+action GetItems returns Array<RoomItem>
 return items
 end
 

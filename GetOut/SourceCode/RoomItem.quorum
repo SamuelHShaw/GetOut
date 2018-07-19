@@ -1,6 +1,6 @@
 use Libraries.Interface.Controls.Button
 
-class Item is Button
+class RoomItem is Button
 boolean canBePickedUp = false
 text name = ""
 text description = ""
