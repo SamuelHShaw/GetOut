@@ -4,6 +4,8 @@ use Libraries.Game.Graphics.Label
 use Libraries.Interface.Layouts.Layout
 use Libraries.Game.Graphics.Texture
 use Libraries.Game.Graphics.Color
+use Libraries.Interface.Layouts.FlowLayout
+use Libraries.Interface.Controls.Button
 
 class Room is Drawable
 Array<Room> exits
@@ -23,15 +25,14 @@ action Render
     textBoxLayout:SetPercentageWidth(0.25)
     //placement of item in relation to parent(which could be screen for larger size
     textBoxLayout:SetPercentageX(0.1)
-    textBoxLayout:SetPercentageY(0.9)
-    //set origin for item
-    textBoxLayout:SetPercentageOriginX(0)
     textBoxLayout:SetPercentageOriginY(1)
+    //set origin for item
+    
 
 //drawable text box
 Drawable gameTextBox
 gameTextBox:LoadRectangle(200,400)
-gameTextBox:SetPosition(100,800)
+gameTextBox:SetPosition(100,400)
 Label gameText
 gameText:SetText("You wake up in a bedroom")
 gameTextBox:Add(gameText)
@@ -39,6 +40,7 @@ gameTextBox:AddLayout(textBoxLayout)
 Add(gameTextBox) 
 
 gameTextBox:Resize()
+
 
 //painting layout
 Layout paintingLayout
@@ -58,7 +60,7 @@ Texture texture
 painting:LoadRectangle(200,800,color:White())
 texture:LoadFromFile("assets/elenaPainting.jpg")
 painting:Load(texture)
-painting:SetPosition(200,800)
+//painting:SetPosition(200,800)
 painting:AddLayout(paintingLayout)
 Add(painting)
 
@@ -72,8 +74,8 @@ painting:Resize()
     3. ItemExitParentFlowLayout
 */
     FlowLayout itemFlow
-    itemFlow:SetFrontPadding(true)
-    itemFlow:SetPadding(50) 
+//    itemFlow:SetFrontPadding(true)
+//    itemFlow:SetPadding(50) 
     itemFlow:SetPercentageWidth(0.4)
     itemFlow:SetPercentageHeight(1.0)
 //    itemFlow:SetPercentageX(0.1)
@@ -81,7 +83,6 @@ painting:Resize()
 
     Drawable itemArea
     itemArea:LoadFilledRectangle(100,50,color:White())
-    itemArea:SetPosition(50,25)
     itemArea:AddLayout(itemFlow)
 /*
     Button button1 
@@ -99,8 +100,8 @@ painting:Resize()
 */
 
 integer counter = 0
-repeat while counter < roomItems:GetLength()
-    itemArea:Add(roomsItems:Get(counter))
+repeat while counter < items:GetSize()
+    itemArea:Add(items:Get(counter))
     counter = counter + 1
 end
     
@@ -109,15 +110,15 @@ end
 //exits flow layout
     FlowLayout exitFlowLayout
     
-    exitFlowLayout:SetFrontPadding(true)
-    exitFlowLayout:SetPadding(50) 
+//    exitFlowLayout:SetFrontPadding(true)
+//    exitFlowLayout:SetPadding(50) 
     exitFlowLayout:SetPercentageWidth(0.25)
     exitFlowLayout:SetPercentageHeight(1.0)
     exitFlowLayout:SetPercentageX(0.6)
 
     Drawable exitArea
     exitArea:LoadFilledRectangle(100,50,color:White())
-    exitArea:SetPosition(150,25)
+    exitArea:SetPosition(250,25)
     exitArea:AddLayout(exitFlowLayout)
 
     Button exit1 
@@ -149,14 +150,16 @@ end
 
     Drawable itemAndExitArea
     itemAndExitArea:LoadFilledRectangle(500,100,color:Blue())
-    itemAndExitArea:SetPosition(50,800)
+//    itemAndExitArea:SetPosition(50,800)
     itemAndExitArea:AddLayout(itemAndExitFlowLayout)
+
     itemAndExitArea:Add(itemArea)
     itemAndExitArea:Add(exitArea)
    
     Add(itemAndExitArea)
     //add itemAndExitFlow to exitArea and itemArea
     itemAndExitArea:Resize()
+    output "stuff " + itemAndExitArea:GetX() + " " + itemAndExitArea:GetY()
 
 end
 
