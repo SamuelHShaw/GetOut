@@ -24,11 +24,11 @@ end
 
 action MakeTextArea
     Layout textBoxLayout    
+    textBoxLayout:SetPercentageOriginY(1.0)
+    textBoxLayout:SetPercentageX(0.1)
     textBoxLayout:SetPercentageHeight(0.5)
     textBoxLayout:SetPercentageWidth(0.25)
-    textBoxLayout:SetPercentageX(0.1)
-    textBoxLayout:SetPercentageOriginY(1.0)
-
+    
 TextBox textBox
 textBox:Initialize(300, 300, color:White(), "Enter text in this TextBox.")
 textBox:AddLayout(textBoxLayout)
@@ -38,17 +38,17 @@ end
 
 action MakeImageArea
 Layout imageAreaLayout
-imageAreaLayout:SetPercentageWidth(0.3)
-imageAreaLayout:SetPercentageHeight(0.5)
-imageAreaLayout:SetPercentageX(0.9)
-imageAreaLayout:SetPercentageY(0.9)
 imageAreaLayout:SetPercentageOriginX(1)
 imageAreaLayout:SetPercentageOriginY(1)
+imageAreaLayout:SetPercentageWidth(0.3)
+imageAreaLayout:SetPercentageHeight(0.5)
+
+
 
 // todo: add border
 
 Texture texture
-texture:LoadFromFile("assets/elenaimage.jpg")
+texture:LoadFromFile("assets/elenaPainting.jpg")
 
 Drawable imageArea
 imageArea:Load(texture)
@@ -97,7 +97,7 @@ end
 
 action MakeExitsArea returns Drawable
     FlowLayout exitFlowLayout
-        exitFlowLayout:SetPercentageWidth(0.25)
+    exitFlowLayout:SetPercentageWidth(0.25)
     exitFlowLayout:SetPercentageHeight(1.0)
     exitFlowLayout:SetPercentageX(0.6)
 
