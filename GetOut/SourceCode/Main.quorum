@@ -1,12 +1,12 @@
 use Libraries.Game.Game
-use Libraries.Containers.Array
+use Libraries.Containers.HashTable
 
 // A text based game to escape a TSBVI dorm
 
 class Main is Game
     Character character
     Room startRoom
-    Array<Room>rooms 
+    HashTable<Text, Room>rooms 
 
     action Main
         StartGame()
@@ -15,7 +15,6 @@ class Main is Game
     action CreateGame
         InitializeCharacter()
         InitializeRooms()
-        
     end
 
 action MakeRoom(text name, text shortDescription, text longDescription) returns Room
@@ -35,14 +34,18 @@ action MakeItem (text name, text description, text role) returns RoomItem
 end
 
 action InitializeRooms
-//create first room to develop layouts, will need to dev rooms in reverse order to provide exits for the rooms
-Room roomr
-roomr = MakeRoom("bedroom", "short description", "longDescription")
-RoomItem item1
-item1 = MakeItem("fav mug","this is the description","cup")
-roomr:AddItem(item1)
-rooms:Add(roomr)
+Room room
 
+//create first room to develop layouts, will need to dev rooms in reverse order to provide exits for the rooms
+
+room = MakeRoom("bedroom", "short description", "longDescription")
+RoomItem item
+item = MakeItem("fav mug","this is the description","cup")
+room:AddRoomItem(item)
+rooms:Add(room:GetName(), room)
+
+// add last made room to game
+Add(room)
 end
 
 action InitializeCharacter

@@ -8,11 +8,11 @@ number intoxication = 0.0  //intoxication will be used as a modifer in in game g
       
 Array<RoomItem> items
 
-action AddItem(RoomItem item)
+action AddRoomItem(RoomItem item)
 items:Add(item)
 end
 
-action GetItems returns Array<RoomItem>
+action GetRoomItems returns Array<RoomItem>
 return items
 end
 

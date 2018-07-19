@@ -3,7 +3,7 @@ use Libraries.Game.Graphics.Drawable
 use Libraries.Game.Graphics.Label
 use Libraries.Interface.Layouts.Layout
 
-class Room
+class Room is Drawable
 Array<Room> exits
 Array<RoomItem> items
 text name = ""
@@ -32,7 +32,7 @@ Label gameText
 gameText:SetText("You wake up in a bedroom")
 gameTextBox:Add(gameText)
 gameTextBox:AddLayout(textBoxLayout)
-//Add(gameTextBox) 
+Add(gameTextBox)
 
 //drawable painting
 //Drawable painting
@@ -58,11 +58,11 @@ action GetExits returns Array<Room>
 return exits
 end
 
-action AddItem(RoomItem item)
+action AddRoomItem(RoomItem item)
 items:Add(item)
 end
 
-action GetItems returns Array<RoomItem>
+action GetRoomItems returns Array<RoomItem>
 return items
 end
 
