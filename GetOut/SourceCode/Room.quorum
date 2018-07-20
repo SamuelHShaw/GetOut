@@ -25,6 +25,7 @@ end
 action MakeTextArea
     Layout textBoxLayout    
     textBoxLayout:SetPercentageOriginY(1.0)
+    textBoxLayout:SetPercentageY(1)
     textBoxLayout:SetPercentageX(0.1)
     textBoxLayout:SetPercentageHeight(0.5)
     textBoxLayout:SetPercentageWidth(0.25)
@@ -40,10 +41,10 @@ action MakeImageArea
 Layout imageAreaLayout
 imageAreaLayout:SetPercentageOriginX(1)
 imageAreaLayout:SetPercentageOriginY(1)
+imageAreaLayout:SetPercentageX(1)
+imageAreaLayout:SetPercentageY(1)
 imageAreaLayout:SetPercentageWidth(0.3)
 imageAreaLayout:SetPercentageHeight(0.5)
-
-
 
 // todo: add border
 
@@ -71,7 +72,8 @@ Drawable exitsArea = MakeExitsArea()
 
     itemAndExitArea:Add(itemsArea)
     itemAndExitArea:Add(exitsArea)
-    itemAndExitArea:Resize()   
+    itemAndExitArea:Resize()
+    output itemAndExitArea:GetGlobalX() + ", " + itemAndExitArea:GetGlobalY() + " x " + itemAndExitArea:GetWidth() + ", " + itemAndExitArea:GetHeight()
     Add(itemAndExitArea)
 end
 
@@ -87,6 +89,7 @@ action MakeItemsArea returns Drawable
 integer counter = 0
 repeat while counter < items:GetSize()
     itemArea:Add(items:Get(counter))
+    items:Get(counter):Initialize(50, 50, "Item Button")
     counter = counter + 1
 end
     

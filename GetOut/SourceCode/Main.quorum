@@ -1,6 +1,7 @@
 use Libraries.Game.Game
 use Libraries.Interface.Layouts.Layout
 use Libraries.Containers.HashTable
+use Libraries.Game.DesktopConfiguration
 
 // A text based game to escape a TSBVI dorm
 
@@ -10,6 +11,8 @@ class Main is Game
     HashTable<Text, Room>rooms 
 
     action Main
+        DesktopConfiguration config = GetDesktopConfiguration()
+        config:resizable = true
         StartGame()
     end
 
@@ -48,6 +51,9 @@ room = MakeRoom("bedroom", "short description", "longDescription")
 RoomItem item
 item = MakeItem("fav mug","this is the description","cup")
 room:AddRoomItem(item)
+RoomItem item2
+item2 = MakeItem("fav mug2","this is the description","cup")
+room:AddRoomItem(item2)
 room:Render()
 
 // add last made room to game
