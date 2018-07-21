@@ -3,12 +3,14 @@
 "name": "Favorite Mug",
 "description": "A small coffee cup with a handle",
 "role": "cup",
-"canBePickedUp": true
+"canBePickedUp": true,
+"behaviors": []
 },
 {
 "name": "desk",
 "description": "A wooden desk with various uninteresting things on it",
 "role": "table",
-"canBePickedUp": false
+"canBePickedUp": false,
+"behaviors": []
 }
 ]
