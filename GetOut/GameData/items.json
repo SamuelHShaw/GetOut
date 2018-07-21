@@ -4,13 +4,146 @@
 "description": "A small coffee cup with a handle",
 "role": "cup",
 "canBePickedUp": true,
-"behaviors": []
+"behaviors": ["PickUp", "Drop"]
 },
 {
-"name": "desk",
+"name": "Sam's Desk",
 "description": "A wooden desk with various uninteresting things on it",
 "role": "table",
 "canBePickedUp": false,
 "behaviors": []
+},
+{
+"name": "ID Badge",
+"description": "A TSBVI ID badge for opening doors and gates on campus",
+"role": "badge",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "T-shirt",
+"description": "A light blue EPIQ 2018 t-shirt",
+"role": "clothing",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Jeans",
+"description": "A pair of normal blue jeans",
+"role": "clothing",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Back Pack",
+"description": "A Black backpack which can store items",
+"role": "bag",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Shoes",
+"description": "A pair of comfortable sneakers",
+"role": "clothing",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Laptop",
+"description": "A lenovo thinkpad laptop",
+"role": "computer",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Chair",
+"description": "A wooden chair near the desk",
+"role": "clothing",
+"canBePickedUp": false,
+"behaviors": []
+},
+{
+"name": "Favorite Mug",
+"description": "A small coffee cup with a handle",
+"role": "cup",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Sam's Desk",
+"description": "A wooden desk with various uninteresting things on it",
+"role": "table",
+"canBePickedUp": false,
+"behaviors": []
+},
+{
+"name": "ID Badge",
+"description": "A TSBVI ID badge for opening doors and gates on campus",
+"role": "badge",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "T-shirt",
+"description": "A light blue EPIQ 2018 t-shirt",
+"role": "clothing",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Jeans",
+"description": "A pair of normal blue jeans",
+"role": "clothing",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Back Pack",
+"description": "A Black backpack which can store items",
+"role": "bag",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Shoes",
+"description": "A pair of comfortable sneakers",
+"role": "clothing",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Laptop",
+"description": "A lenovo thinkpad laptop",
+"role": "computer",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Water Glass",
+"description": "A glass of water",
+"role": "drink",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Beer",
+"description": "A can of beer",
+"role": "drink",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Sandwhich",
+"description": "A grilled tuna tomatoe and swiss sandwhich",
+"role": "food",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
+},
+{
+"name": "Apple",
+"description": "A green appkle",
+"role": "drink",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop"]
 }
 ]
