@@ -143,6 +143,10 @@ action AddRoomItem(RoomItem item)
 items:Add(item)
 end
 
+action RemoveRoomItem(RoomItem item)
+items:Remove(item)
+end
+
 action GetRoomItems returns Array<RoomItem>
 return items
 end
