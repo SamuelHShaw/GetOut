@@ -1,3 +1,4 @@
+use Libraries.Data.Formats.JavaScriptObjectNotation
 use Libraries.Containers.Array
 use Libraries.Game.Graphics.Drawable
 use Libraries.Game.Graphics.Label
@@ -9,7 +10,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.TextBox
 
 class Room is Drawable
-Array<Room> exits
+Array<text> exits
 Array<RoomItem> items
 text name = ""
 text shortDescription = ""
@@ -111,7 +112,7 @@ action MakeExitsArea returns Drawable
 counter = 0
 repeat while counter < exits:GetSize()
 Button b
-b:Initialize(50, 50, exits:Get(counter):GetName())
+b:Initialize(50, 50, exits:Get(counter))
 exitArea:Add(b)
 counter = counter+1
 end
@@ -128,11 +129,11 @@ action SetName(text name)
 me:name = name
 end
 
-action AddExit(Room room)
+action AddExit(text room)
 exits:Add(room)
 end
 
-action GetExits returns Array<Room>
+action GetExits returns Array<text>
 return exits
 end
 
@@ -165,4 +166,28 @@ count = exits:GetSize()
 return "You are in "+name+". There are "+count+" exits out of here."
 end
 
+action LoadFromJSON(JavaScriptObjectNotation json)
+me:name = json:GetValue("name")
+me:shortDescription = json:GetValue("shortDescription")
+me:longDescription = json:GetValue("longDescription")
+
+JavaScriptObjectNotation exits
+exits:Read(json:GetValue("exits"))
+counter = 0
+repeat while counter < exits:GetSize()
+me:exits:Add(exits:Get(counter):GetText())
+counter = counter+1
+end
+
+JavaScriptObjectNotation items
+items:Read(json:GetValue("items"))
+counter = 0
+repeat while counter < items:GetSize()
+RoomItem item
+item:LoadFromJSON(items:Get(counter))
+me:items:Add(item)
+counter = counter+1
+end
+
+end
 end

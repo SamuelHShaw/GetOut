@@ -2,13 +2,15 @@ use Libraries.Game.Game
 use Libraries.Interface.Layouts.Layout
 use Libraries.Containers.HashTable
 use Libraries.Game.DesktopConfiguration
+use Libraries.Data.Formats.JavaScriptObjectNotation
+use Libraries.System.File
 
 // A text based game to escape a TSBVI dorm
 
 class Main is Game
+    text startRoom = "Sam's Bedroom"
     Character character
-    Room startRoom
-    HashTable<Text, Room>rooms 
+    HashTable<text, Room>rooms
 
     action Main
         DesktopConfiguration config = GetDesktopConfiguration()
@@ -38,26 +40,25 @@ action MakeItem (text name, text description, text role) returns RoomItem
 end
 
 action InitializeRooms
-Room room
 Layout roomLayout
 roomLayout:SetPercentageHeight(1.0)
 roomLayout:SetPercentageWidth(1.0)
+
+File roomsFile
+roomsFile:SetPath("data/rooms.json")
+JavaScriptObjectNotation json
+json:Read(roomsFile)
+
+counter = 0
+repeat while counter < json:GetSize()
+Room room
+room:LoadFromJSON(json:Get(counter))
 room:AddLayout(roomLayout)
+rooms:Set(room:GetName(), room)
+counter = counter+1
+end
 
-
-//create first room to develop layouts, will need to dev rooms in reverse order to provide exits for the rooms
-
-room = MakeRoom("bedroom", "short description", "longDescription")
-RoomItem item
-item = MakeItem("fav mug","this is the description","cup")
-room:AddRoomItem(item)
-RoomItem item2
-item2 = MakeItem("fav mug2","this is the description","cup")
-room:AddRoomItem(item2)
-room:Render()
-
-// add last made room to game
-Add(room)
+Add(rooms:GetValue(startRoom))
 end
 
 action InitializeCharacter
