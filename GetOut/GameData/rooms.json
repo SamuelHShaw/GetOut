@@ -4,6 +4,7 @@
 "name": "Sam's Bedroom",
 "shortDescription": "",
 "longDescription": "",
-"items": ["Favorite Mug", "Sam's Desk"]
+"items": ["Favorite Mug", "Sam's Desk"],
+"exits": ["hallway"]
 }]
 }

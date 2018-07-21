@@ -11,6 +11,8 @@ class Main is Game
     text startRoom = "Sam's Bedroom"
     Character character
     HashTable<text, Room>rooms
+    HashTable<text, RoomItem> items
+
 
     action Main
         DesktopConfiguration config = GetDesktopConfiguration()
@@ -20,23 +22,25 @@ class Main is Game
 
     action CreateGame
         InitializeCharacter()
+        InitializeItems()
         InitializeRooms()
     end
 
-action MakeRoom(text name, text shortDescription, text longDescription) returns Room
-    Room r
-    r:SetName(name)
-    r:SetShortDescription(shortDescription)
-    r:SetLongDescription(longDescription)
-    return r
+action InitializeItems
+File itemsFile
+itemsFile:SetPath("GameData/items.json")
+
+JavaScriptObjectNotation json
+json:Read(itemsFile)
+
+counter = 0
+repeat while counter < json:GetSize()
+RoomItem roomItem
+roomItem:LoadFromJSON(json:Get(counter))
+items:Set(roomItem:GetName(), roomItem)
+counter = counter+1
 end
 
-action MakeItem (text name, text description, text role) returns RoomItem
-    RoomItem i
-    i:SetName(name)
-    i:SetDescription(description)
-    i:SetRole(role)
-    return i
 end
 
 action InitializeRooms
@@ -45,14 +49,14 @@ roomLayout:SetPercentageHeight(1.0)
 roomLayout:SetPercentageWidth(1.0)
 
 File roomsFile
-roomsFile:SetPath("data/rooms.json")
+roomsFile:SetPath("GameData/rooms.json")
 JavaScriptObjectNotation json
 json:Read(roomsFile)
 
 counter = 0
 repeat while counter < json:GetSize()
 Room room
-room:LoadFromJSON(json:Get(counter))
+room:LoadFromJSON(json:Get(counter), items)
 room:AddLayout(roomLayout)
 rooms:Set(room:GetName(), room)
 counter = counter+1

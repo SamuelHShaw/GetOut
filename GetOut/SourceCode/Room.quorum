@@ -8,6 +8,8 @@ use Libraries.Game.Graphics.Color
 use Libraries.Interface.Layouts.FlowLayout
 use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.TextBox
+use Libraries.Containers.Array
+use Libraries.Containers.HashTable
 
 class Room is Drawable
 Array<text> exits
@@ -166,7 +168,7 @@ count = exits:GetSize()
 return "You are in "+name+". There are "+count+" exits out of here."
 end
 
-action LoadFromJSON(JavaScriptObjectNotation json)
+action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, RoomItem> items)
 me:name = json:GetValue("name")
 me:shortDescription = json:GetValue("shortDescription")
 me:longDescription = json:GetValue("longDescription")
@@ -179,13 +181,12 @@ me:exits:Add(exits:Get(counter):GetText())
 counter = counter+1
 end
 
-JavaScriptObjectNotation items
-items:Read(json:GetValue("items"))
+JavaScriptObjectNotation itemNames
+itemNames:Read(json:GetValue("items"))
 counter = 0
-repeat while counter < items:GetSize()
+repeat while counter < itemNames:GetSize()
 RoomItem item
-item:LoadFromJSON(items:Get(counter))
-me:items:Add(item)
+me:items:Add(items:GetValue(itemNames:Get(counter):GetText()))
 counter = counter+1
 end
 
