@@ -1,0 +1,15 @@
+use Libraries.Interface.Behaviors.Behavior
+use Libraries.Interface.Events.BehaviorEvent
+use Libraries.Interface.Item
+use Libraries.Game.GameStateManager 
+
+class ChangeRoomBehavior is Behavior
+
+GameStateManager gsm
+
+    action Run(BehaviorEvent event) 
+        Main game = cast(Main, gsm:GetGame())
+        RoomItem item = cast(RoomItem, event:GetItem())        
+        game:SetActiveRoom(item:GetName())
+    end
+end
