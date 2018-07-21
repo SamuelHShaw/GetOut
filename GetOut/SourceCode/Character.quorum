@@ -2,9 +2,12 @@ use Libraries.Containers.Array
 
 class Character 
 text name = ""
-integer energy = 0
-boolean wearingClothing = false
+integer energy = 100
 number intoxication = 0.0  //intoxication will be used as a modifer in in game games, lol. increase speeds or wobbleyness of objects and accuracy
+boolean wearingClothing = false
+boolean drunk = false
+boolean lowEnergy = false
+
 Room room
 Array<RoomItem> items
 
@@ -40,31 +43,60 @@ action GetEnergy() returns integer
     return energy
 end
 
-action SetEnergy(integer e)
-    energy = e
+action ModEnergy(integer e)
+    energy = energy+e
+    if energy < 0
+        energy = 0
+    elseif energy > 100
+        energy = 100
+    end
+end
+
+action GainEnergy
+    ModEnergy(10)
+end
+
+action LoseEnergy
+    ModEnergy(-1)
 end
 
 action SetWearingClothing(boolean c)
     wearingClothing = c
 end
 
-action GetWearingClothing() returns boolean
+action IsWearingClothing() returns boolean
     return wearingClothing
 end
 
-action SetIntoxication(number i)
-    if i >= 1.0
+action ModIntoxication(number i)
+    intoxication = intoxication+i
+    if intoxication > 1.0
         intoxication = 1.0
-    elseif i <= 0.0
+    elseif intoxication < 0.0
         intoxication = 0.0
-    else
-        //do nothing
     end
 end
 
-action RunChecks
-// this is where we'll do stuff if thursty, low energy, drunk
+action GainIntoxication
+    ModIntoxication(0.02)
+end
 
+action LoseIntoxication
+    ModIntoxication(-0.02)
+end
+
+action RunChecks
+    if intoxication >= 0.08
+        drunk = true
+    else
+        drunk = false
+    end
+
+    if energy <= 0.20
+        lowEnergy = true
+    else
+        lowEnergy = false
+    end
 end
 
 end

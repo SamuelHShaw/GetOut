@@ -39,6 +39,13 @@ behaviors:Set("PickUp", pickUpBehavior)
 
 DropBehavior dropBehavior
 behaviors:Set("Drop", dropBehavior)
+
+DrinkBehavior drinkBehavior
+behaviors:Set("Drink", drinkBehavior)
+
+EatBehavior eatBehavior
+behaviors:Set("Eat", eatBehavior)
+
 end
 
 action InitializeItems
