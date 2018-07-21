@@ -6,6 +6,7 @@ integer energy = 0
 boolean wearingClothing = false
 number intoxication = 0.0  //intoxication will be used as a modifer in in game games, lol. increase speeds or wobbleyness of objects and accuracy
 Room room
+Array<RoomItem> items
 
 action GetRoom returns Room
 return room
@@ -15,10 +16,12 @@ action SetRoom(Room room)
 me:room = room
 end
       
-Array<RoomItem> items
-
 action AddRoomItem(RoomItem item)
 items:Add(item)
+end
+
+action RemoveRoomItem(RoomItem item)
+items:Remove(item)
 end
 
 action GetRoomItems returns Array<RoomItem>
