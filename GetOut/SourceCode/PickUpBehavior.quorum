@@ -16,15 +16,6 @@ GameStateManager gsm
 
         currentRoom:RemoveRoomItem(item)
         character:AddRoomItem(item)
-
-//write drop off behavior
-
-    /*Get character from game state
-    Add item to character items array
-    Get room from Game state manager
-    Remove item from rooms items arrays
-    */
-    
         
     end
 end
