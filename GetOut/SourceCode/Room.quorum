@@ -145,6 +145,7 @@ end
 
 action RemoveRoomItem(RoomItem item)
 items:Remove(item)
+Remove(item)
 end
 
 action GetRoomItems returns Array<RoomItem>
