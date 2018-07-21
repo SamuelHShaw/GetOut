@@ -5,6 +5,15 @@ text name = ""
 integer energy = 0
 boolean wearingClothing = false
 number intoxication = 0.0  //intoxication will be used as a modifer in in game games, lol. increase speeds or wobbleyness of objects and accuracy
+Room room
+
+action GetRoom returns Room
+return room
+end
+
+action SetRoom(Room room)
+me:room = room
+end
       
 Array<RoomItem> items
 

@@ -13,6 +13,10 @@ class Main is Game
     HashTable<text, Room>rooms
     HashTable<text, RoomItem> items
 
+action GetCharacter returns Character
+return character
+end
+
 
     action Main
         DesktopConfiguration config = GetDesktopConfiguration()
@@ -90,6 +94,7 @@ character:RunChecks()
 end
 
 action Add(Room r)
+character:SetRoom(r)
 r:Render()
 parent:Game:Add(r)
 end
