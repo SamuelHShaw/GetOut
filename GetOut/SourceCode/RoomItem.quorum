@@ -1,11 +1,12 @@
 use Libraries.Interface.Controls.Button
 use Libraries.Data.Formats.JavaScriptObjectNotation
+use Libraries.Containers.HashTable
 use Libraries.Containers.Array
+use Libraries.Interface.Behaviors.Behavior
 
 class RoomItem is Button
 boolean canBePickedUp = false
 text role = ""
-Array<text> behaviors
 
 action GetRole returns text
 return role
@@ -27,15 +28,15 @@ action GenerateSummary returns text
 return GetName() + " is a " + role + ". " + GetDescription()
 end
 
-action LoadFromJSON(JavaScriptObjectNotation json)
+action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, Behavior> behaviors)
 me:role = json:GetValue("role")
 me:canBePickedUp = cast(boolean, json:GetValue("canBePickedUp"))
-JavaScriptObjectNotation behaviors
-behaviors:Read(json:GetValue("behaviors"))
+JavaScriptObjectNotation behaviorsJSON
+behaviorsJSON:Read(json:GetValue("behaviors"))
 
 counter = 0
-repeat while counter < behaviors:GetSize()
-me:behaviors:Add(behaviors:Get(counter):GetText())
+repeat while counter < behaviorsJSON:GetSize()
+me:AddBehavior(behaviors:GetValue(behaviorsJSON:Get(counter):GetText()))
 end
 
 end

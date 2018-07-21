@@ -1,3 +1,4 @@
+use Libraries.Interface.Behaviors.Behavior
 use Libraries.Game.Game
 use Libraries.Interface.Layouts.Layout
 use Libraries.Containers.HashTable
@@ -12,6 +13,7 @@ class Main is Game
     Character character
     HashTable<text, Room>rooms
     HashTable<text, RoomItem> items
+HashTable<text, Behavior> behaviors
 
 action GetCharacter returns Character
 return character
@@ -25,10 +27,19 @@ end
     end
 
     action CreateGame
+InitializeBehaviors()
         InitializeCharacter()
         InitializeItems()
         InitializeRooms()
     end
+
+action InitializeBehaviors
+PickUpBehavior pickUpBehavior
+behaviors:Set("PickUp", pickUpBehavior)
+
+DropBehavior dropBehavior
+behaviors:Set("Drop", dropBehavior)
+end
 
 action InitializeItems
 File itemsFile
@@ -42,7 +53,7 @@ output("json: "+json:ToText())
 counter = 0
 repeat while counter < json:GetSize()
 RoomItem roomItem
-roomItem:LoadFromJSON(json:Get(counter))
+roomItem:LoadFromJSON(json:Get(counter), behaviors)
 items:Set(roomItem:GetName(), roomItem)
 counter = counter+1
 end
