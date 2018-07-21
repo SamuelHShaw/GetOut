@@ -79,7 +79,7 @@ rooms:Set(room:GetName(), room)
 counter = counter+1
 end
 
-Add(rooms:GetValue(startRoom))
+SetActiveRoom(startRoom)
 end
 
 action InitializeCharacter
@@ -104,10 +104,19 @@ action SecondPassed
 character:RunChecks()
 end
 
-action Add(Room r)
+action SetActiveRoom(text roomName)
+SetActiveRoom(rooms:GetValue(roomName))
+end
+
+action SetActiveRoom(Room r)
+Room currentRoom = character:GetRoom()
+if currentRoom not= undefined
+Remove(currentRoom)
+end
+
 character:SetRoom(r)
 r:Render()
-parent:Game:Add(r)
+Add(r)
 end
 
 end

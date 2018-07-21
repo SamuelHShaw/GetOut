@@ -113,10 +113,12 @@ action MakeExitsArea returns Drawable
     exitArea:LoadFilledRectangle(100,50,color:White())
     exitArea:AddLayout(exitFlowLayout)
 
+ChangeRoomBehavior changeRoomBehavior
 counter = 0
 repeat while counter < exits:GetSize()
 Button b
 b:Initialize(50, 50, exits:Get(counter))
+b:AddBehavior(changeRoomBehavior)
 exitArea:Add(b)
 counter = counter+1
 end
