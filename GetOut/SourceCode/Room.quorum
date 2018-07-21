@@ -18,6 +18,8 @@ text name = ""
 text shortDescription = ""
 text longDescription = ""
 Color color
+Drawable roomItemsDrawable
+Drawable exitsDrawable
 
 action Render
 MakeTextArea()
@@ -97,7 +99,7 @@ repeat while counter < items:GetSize()
 end
     
     itemArea:Resize()
-
+roomItemsDrawable = itemArea
 return itemArea
 end
 
@@ -120,6 +122,7 @@ counter = counter+1
 end
   
     exitArea:Resize()
+exitsDrawable = exitArea
   return exitArea
 end
   
@@ -141,11 +144,12 @@ end
 
 action AddRoomItem(RoomItem item)
 items:Add(item)
+roomItemsDrawable:Add(item)
 end
 
 action RemoveRoomItem(RoomItem item)
 items:Remove(item)
-Remove(item)
+roomItemsDrawable:Remove(item)
 end
 
 action GetRoomItems returns Array<RoomItem>
