@@ -33,6 +33,8 @@ itemsFile:SetPath("GameData/items.json")
 JavaScriptObjectNotation json
 json:Read(itemsFile)
 
+output("json: "+json:ToText())
+
 counter = 0
 repeat while counter < json:GetSize()
 RoomItem roomItem

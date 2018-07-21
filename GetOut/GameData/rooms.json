@@ -1,10 +1,9 @@
-{
-"rooms": [
+[
 {
 "name": "Sam's Bedroom",
 "shortDescription": "",
 "longDescription": "",
 "items": ["Favorite Mug", "Sam's Desk"],
 "exits": ["hallway"]
-}]
 }
+]

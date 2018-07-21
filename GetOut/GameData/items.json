@@ -1,5 +1,4 @@
-{
-"items": [
+[
 {
 "name": "Favorite Mug",
 "description": "A small coffee cup with a handle",
@@ -11,5 +10,5 @@
 "description": "A wooden desk with various uninteresting things on it",
 "role": "table",
 "canBePickedUp": false
-}]
 }
+]
