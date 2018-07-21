@@ -1,0 +1,22 @@
+use Libraries.Interface.Behaviors.Behavior
+use Libraries.Interface.Events.BehaviorEvent
+use Libraries.Interface.Item
+use Libraries.Game.GameStateManager 
+
+class DropBehavior is Behavior
+
+GameStateManager gsm
+
+    action Run(BehaviorEvent event) 
+
+        Main game = cast(Main, gsm:GetGame())
+        Character character = game:GetCharacter()
+        Room currentRoom = character:GetRoom()
+        RoomItem item = cast(RoomItem, event:GetItem())
+//remove from character item array
+        character:RemoveRoomItem(item)
+//add to room item array
+        currentRoom:AddRoomItem(item)
+
+    end
+end
