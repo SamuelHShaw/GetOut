@@ -22,7 +22,6 @@ text shortDescription = ""
 text longDescription = ""
 Color color
 Drawable roomItemsDrawable
-Drawable exitsDrawable
 Item2D firstFocusable
 Item2D currentFocusable
 
@@ -30,6 +29,9 @@ action Render
 MakeTextArea()
 MakeImageArea()
 MakeButtonStrip()
+end
+
+action Focus
 firstFocusable:Focus()
 end
 
@@ -73,22 +75,24 @@ Add(imageArea)
 end
 
 action MakeButtonStrip
-Drawable itemsArea = MakeItemsArea()
 Drawable exitsArea = MakeExitsArea()
+Drawable itemsArea = MakeItemsArea()
+Drawable behaviorsArea = MakeBehaviorsArea()
 
-    FlowLayout itemAndExitFlowLayout
-    itemAndExitFlowLayout:SetPercentageWidth(0.5)
-    itemAndExitFlowLayout:SetPercentageHeight(0.25)
+    FlowLayout buttonStripFlowLayout
+    buttonStripFlowLayout:SetPercentageWidth(0.5)
+    buttonStripFlowLayout:SetPercentageHeight(0.25)
 
-    Drawable itemAndExitArea
-    itemAndExitArea:LoadFilledRectangle(500,100,color:Blue())
-    itemAndExitArea:AddLayout(itemAndExitFlowLayout)
+    Drawable buttonStrip
+    buttonStrip:LoadFilledRectangle(500,100,color:Blue())
+    buttonStrip:AddLayout(buttonStripFlowLayout)
 
-    itemAndExitArea:Add(itemsArea)
-    itemAndExitArea:Add(exitsArea)
-    itemAndExitArea:Resize()
-//    output itemAndExitArea:GetGlobalX() + ", " + itemAndExitArea:GetGlobalY() + " x " + itemAndExitArea:GetWidth() + ", " + itemAndExitArea:GetHeight()
-    Add(itemAndExitArea)
+    buttonStrip:Add(itemsArea)
+    buttonStrip:Add(exitsArea)
+    buttonStrip:Add(behaviorsArea)
+
+    buttonStrip:Resize()
+    Add(buttonStrip)
 end
 
 action MakeItemsArea returns Drawable
@@ -103,7 +107,6 @@ action MakeItemsArea returns Drawable
 integer counter = 0
 repeat while counter < items:GetSize()
 RoomItem cur = items:Get(counter)
-    cur:Initialize(50, 50, "Item Button")
     itemArea:Add(cur)
     AddToFocus(cur)
     counter = counter + 1
@@ -129,15 +132,28 @@ counter = 0
 repeat while counter < exits:GetSize()
 Button b
 b:Initialize(50, 50, exits:Get(counter))
-b:AddBehavior(changeRoomBehavior)
+b:SetBehavior(changeRoomBehavior)
 exitArea:Add(b)
     AddToFocus(b)
 counter = counter+1
 end
   
     exitArea:Resize()
-exitsDrawable = exitArea
   return exitArea
+end
+
+action MakeBehaviorsArea returns Drawable
+    FlowLayout behaviorsFlowLayout
+    behaviorsFlowLayout:SetPercentageWidth(0.25)
+    behaviorsFlowLayout:SetPercentageHeight(1.0)
+    behaviorsFlowLayout:SetPercentageX(0.6)
+
+    Drawable behaviorsArea
+    behaviorsArea:LoadFilledRectangle(100,50,color:White())
+    behaviorsArea:AddLayout(behaviorsFlowLayout)
+  
+    behaviorsArea:Resize()
+  return behaviorsArea
 end
 
 // the signatures for these two next methods must change but Sina and Andy have to argue a lot first!
@@ -215,7 +231,7 @@ me:longDescription = json:GetValue("longDescription")
 JavaScriptObjectNotation exitNames
 exitNames:Read(json:GetValue("exits"))
 
-output("json:GetValue('exits'): "+json:GetValue("exits"))
+//output("json:GetValue('exits'): "+json:GetValue("exits"))
 
 counter = 0
 repeat while counter < exitNames:GetSize()
@@ -225,7 +241,7 @@ end
 
 JavaScriptObjectNotation itemNames
 itemNames:Read(json:GetValue("items"))
-output("json:GetValue('items'): "+json:GetValue("items"))
+//output("json:GetValue('items'): "+json:GetValue("items"))
 
 counter = 0
 repeat while counter < itemNames:GetSize()
@@ -234,19 +250,19 @@ me:items:Add(items:GetValue(itemNames:Get(counter):GetText()))
 counter = counter+1
 end
 
-output("me:exits size: "+me:exits:GetSize())
+//output("me:exits size: "+me:exits:GetSize())
 
 counter = 0
 repeat while counter < me:exits:GetSize()
-output(counter+": "+me:exits:Get(counter))
+//output(counter+": "+me:exits:Get(counter))
 counter = counter+1
 end
 
-output("items size: "+me:items:GetSize())
+//output("items size: "+me:items:GetSize())
 
 counter = 0
 repeat while counter < me:items:GetSize()
-output(counter+": "+me:items:Get(counter):GetName())
+//output(counter+": "+me:items:Get(counter):GetName())
 counter = counter+1
 end
 

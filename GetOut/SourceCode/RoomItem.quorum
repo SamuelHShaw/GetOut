@@ -7,6 +7,7 @@ use Libraries.Interface.Behaviors.Behavior
 class RoomItem is Button
 boolean canBePickedUp = false
 text role = ""
+Array<Behavior> behaviors
 
 action GetRole returns text
 return role
@@ -24,24 +25,31 @@ action SetCanBePickedUp(boolean canBePickedUp)
 me:canBePickedUp = canBePickedUp
 end
 
+action GetBehaviors returns Array<Behavior>
+return behaviors
+end
+
 action GenerateSummary returns text
 return GetName() + " is a " + role + ". " + GetDescription()
 end
 
 action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, Behavior> behaviors)
-me:role = json:GetValue("role")
-me:canBePickedUp = cast(boolean, json:GetValue("canBePickedUp"))
+// I don't like having this here, but Initialize concept sucks right now
+Initialize(50, 50, "Item Button")
+
+role = json:GetValue("role")
+canBePickedUp = json:GetBoolean("canBePickedUp")
 SetName(json:GetValue("name"))
 SetDescription(json:GetValue("description"))
 
 JavaScriptObjectNotation behaviorsJSON
 behaviorsJSON:Read(json:GetValue("behaviors"))
 
-output("Behavior for: "+GetName()+": "+GetDescription())
+// output("name: "+GetName()+", Description: "+GetDescription())
+//output("Behavior(s): ")
 counter = 0
 repeat while counter < behaviorsJSON:GetSize()
-//me:AddBehavior(behaviors:GetValue(behaviorsJSON:Get(counter):GetText()))
-output(behaviorsJSON:Get(counter):GetText())
+me:behaviors:Add(behaviors:GetValue(behaviorsJSON:Get(counter):GetText()))
 counter = counter+1
 end
 

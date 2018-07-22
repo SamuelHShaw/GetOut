@@ -10,7 +10,8 @@ GameStateManager gsm
 
     action Run(BehaviorEvent event) 
         Main game = cast(Main, gsm:GetGame())
-        Button item = cast(Button, event:GetItem())        
-        game:SetActiveRoom(item:GetName())
+        Button room = cast(Button, event:GetItem())        
+output("change to "+room:GetName())
+        game:SetActiveRoom(room:GetName())
     end
 end

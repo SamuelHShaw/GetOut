@@ -4,6 +4,14 @@
 "shortDescription": "",
 "longDescription": "",
 "items": ["Favorite Mug", "Sam's Desk"],
-"exits": ["hallway"]
+"exits": ["Hallway"]
+},
+{
+"name": "Hallway",
+"shortDescription": "",
+"longDescription": "",
+"items": [],
+"exits": ["Sam's Bedroom"]
 }
+
 ]
