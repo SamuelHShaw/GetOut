@@ -212,22 +212,41 @@ me:name = json:GetValue("name")
 me:shortDescription = json:GetValue("shortDescription")
 me:longDescription = json:GetValue("longDescription")
 
-JavaScriptObjectNotation exits
-//output("json:GetValue('exits'): "+json:GetValue("exits"))
-exits:Read(json:GetValue("exits"))
+JavaScriptObjectNotation exitNames
+exitNames:Read(json:GetValue("exits"))
+
+output("json:GetValue('exits'): "+json:GetValue("exits"))
+
 counter = 0
-repeat while counter < exits:GetSize()
-me:exits:Add(exits:Get(counter):GetText())
+repeat while counter < exitNames:GetSize()
+exits:Add(exitNames:Get(counter):GetText())
 counter = counter+1
 end
 
 JavaScriptObjectNotation itemNames
-//output("json:GetValue('items'): "+json:GetValue("items"))
 itemNames:Read(json:GetValue("items"))
+output("json:GetValue('items'): "+json:GetValue("items"))
+
 counter = 0
 repeat while counter < itemNames:GetSize()
 RoomItem item
 me:items:Add(items:GetValue(itemNames:Get(counter):GetText()))
+counter = counter+1
+end
+
+output("me:exits size: "+me:exits:GetSize())
+
+counter = 0
+repeat while counter < me:exits:GetSize()
+output(counter+": "+me:exits:Get(counter))
+counter = counter+1
+end
+
+output("items size: "+me:items:GetSize())
+
+counter = 0
+repeat while counter < me:items:GetSize()
+output(counter+": "+me:items:Get(counter):GetName())
 counter = counter+1
 end
 

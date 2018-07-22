@@ -115,6 +115,7 @@ character:RunChecks()
 end
 
 action SetActiveRoom(text roomName)
+output("room name"+roomName)
 SetActiveRoom(rooms:GetValue(roomName))
 end
 

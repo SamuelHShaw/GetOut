@@ -31,12 +31,18 @@ end
 action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, Behavior> behaviors)
 me:role = json:GetValue("role")
 me:canBePickedUp = cast(boolean, json:GetValue("canBePickedUp"))
+SetName(json:GetValue("name"))
+SetDescription(json:GetValue("description"))
+
 JavaScriptObjectNotation behaviorsJSON
 behaviorsJSON:Read(json:GetValue("behaviors"))
 
+output("Behavior for: "+GetName()+": "+GetDescription())
 counter = 0
 repeat while counter < behaviorsJSON:GetSize()
-me:AddBehavior(behaviors:GetValue(behaviorsJSON:Get(counter):GetText()))
+//me:AddBehavior(behaviors:GetValue(behaviorsJSON:Get(counter):GetText()))
+output(behaviorsJSON:Get(counter):GetText())
+counter = counter+1
 end
 
 end
