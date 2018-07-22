@@ -1,0 +1,13 @@
+use Libraries.Interface.Controls.Button
+
+class RoomItemButton is Button
+RoomItem item
+
+action GetRoomItem returns RoomItem
+return item
+end
+
+action SetRoomItem(RoomItem item)
+me:item = item
+end
+end
