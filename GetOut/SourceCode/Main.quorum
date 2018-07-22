@@ -46,6 +46,9 @@ behaviors:Set("Drink", drinkBehavior)
 EatBehavior eatBehavior
 behaviors:Set("Eat", eatBehavior)
 
+ClotheBehavior clotheBehavior
+behaviors:Set("Clothe", clotheBehavior)
+
 end
 
 action InitializeItems
@@ -55,7 +58,7 @@ itemsFile:SetPath("GameData/items.json")
 JavaScriptObjectNotation json
 json:Read(itemsFile)
 
-output("json: "+json:ToText())
+// output("json: "+json:ToText())
 
 counter = 0
 repeat while counter < json:GetSize()

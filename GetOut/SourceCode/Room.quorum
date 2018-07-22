@@ -213,7 +213,7 @@ me:shortDescription = json:GetValue("shortDescription")
 me:longDescription = json:GetValue("longDescription")
 
 JavaScriptObjectNotation exits
-output("json:GetValue('exits'): "+json:GetValue("exits"))
+//output("json:GetValue('exits'): "+json:GetValue("exits"))
 exits:Read(json:GetValue("exits"))
 counter = 0
 repeat while counter < exits:GetSize()
@@ -222,7 +222,7 @@ counter = counter+1
 end
 
 JavaScriptObjectNotation itemNames
-output("json:GetValue('items'): "+json:GetValue("items"))
+//output("json:GetValue('items'): "+json:GetValue("items"))
 itemNames:Read(json:GetValue("items"))
 counter = 0
 repeat while counter < itemNames:GetSize()
