@@ -1,6 +1,9 @@
 use Libraries.Data.Formats.JavaScriptObjectNotation
 use Libraries.Containers.Array
 use Libraries.Game.Graphics.Drawable
+use Libraries.Interface.Item
+use Libraries.Interface.Item2D
+use Libraries.Interface.Events.FocusListener
 use Libraries.Game.Graphics.Label
 use Libraries.Interface.Layouts.Layout
 use Libraries.Game.Graphics.Texture
@@ -20,11 +23,14 @@ text longDescription = ""
 Color color
 Drawable roomItemsDrawable
 Drawable exitsDrawable
+Item2D firstFocusable
+Item2D currentFocusable
 
 action Render
 MakeTextArea()
 MakeImageArea()
 MakeButtonStrip()
+firstFocusable:Focus()
 end
 
 action MakeTextArea
@@ -37,6 +43,7 @@ action MakeTextArea
     
 TextBox textBox
 textBox:Initialize(300, 300, color:White(), "Enter text in this TextBox.")
+SetFirstFocus(textBox)
 textBox:AddLayout(textBoxLayout)
 textBox:Resize()
 Add(textBox) 
@@ -58,6 +65,8 @@ texture:LoadFromFile("assets/elenaPainting.jpg")
 
 Drawable imageArea
 imageArea:Load(texture)
+imageArea:SetFocusable(true)
+AddToFocus(imageArea)
 imageArea:AddLayout(imageAreaLayout)
 imageArea:Resize()
 Add(imageArea)
@@ -93,8 +102,10 @@ action MakeItemsArea returns Drawable
 
 integer counter = 0
 repeat while counter < items:GetSize()
-    itemArea:Add(items:Get(counter))
-    items:Get(counter):Initialize(50, 50, "Item Button")
+RoomItem cur = items:Get(counter)
+    cur:Initialize(50, 50, "Item Button")
+    itemArea:Add(cur)
+    AddToFocus(cur)
     counter = counter + 1
 end
     
@@ -120,6 +131,7 @@ Button b
 b:Initialize(50, 50, exits:Get(counter))
 b:AddBehavior(changeRoomBehavior)
 exitArea:Add(b)
+    AddToFocus(b)
 counter = counter+1
 end
   
@@ -127,7 +139,23 @@ end
 exitsDrawable = exitArea
   return exitArea
 end
-  
+
+// the signatures for these two next methods must change but Sina and Andy have to argue a lot first!
+
+action SetFirstFocus(Item2D item)
+    item:SetFocusable(true)
+firstFocusable = item
+currentFocusable = item
+end
+
+action AddToFocus(Item2D item)
+    item:SetFocusable(true)
+    item:SetPreviousFocus(currentFocusable)
+    item:SetNextFocus(firstFocusable)
+    currentFocusable:SetNextFocus(item)
+    currentFocusable = item
+end
+
 action GetName returns text
 return name
 end
