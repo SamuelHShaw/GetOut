@@ -128,7 +128,7 @@ end
 character:SetRoom(r)
 r:Render()
 Add(r)
-r:Focus()
+// r:Focus()
 end
 
 end

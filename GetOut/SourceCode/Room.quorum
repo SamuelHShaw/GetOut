@@ -32,7 +32,9 @@ MakeButtonStrip()
 end
 
 action Focus
-firstFocusable:Focus()
+TextBox box
+box = cast(TextBox, firstFocusable)
+box:Focus()
 end
 
 action MakeTextArea
@@ -228,6 +230,7 @@ me:name = json:GetValue("name")
 me:shortDescription = json:GetValue("shortDescription")
 me:longDescription = json:GetValue("longDescription")
 
+output(name+", Room:LoadFromJSON")
 JavaScriptObjectNotation exitNames
 exitNames:Read(json:GetValue("exits"))
 
