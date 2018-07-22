@@ -237,13 +237,15 @@ action ShowBehaviorsFor(RoomItem item)
 counter = 0
 repeat while counter < keys:GetSize()
 text key = keys:Get(counter)
-Button b
+RoomItemButton b
 b:Initialize(50, 50, key)
+b:SetRoomItem(item)
 b:SetBehavior(behaviors:GetValue(key))
 behaviorsDrawable:Add(b)
     AddToFocus(b)
 counter = counter+1
 end
+    behaviorsDrawable:Resize()
 end
 
 action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, RoomItem> items)

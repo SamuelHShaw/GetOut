@@ -12,7 +12,9 @@ GameStateManager gsm
         Main game = cast(Main, gsm:GetGame())
         Character character = game:GetCharacter()
         Room currentRoom = character:GetRoom()
-        RoomItem item = cast(RoomItem, event:GetItem())
+        RoomItemButton button = cast(RoomItemButton, event:GetItem())
+        RoomItem item = button:GetRoomItem()
+
 //add to room item array
         currentRoom:RemoveRoomItem(item)
         character:GainEnergy()
