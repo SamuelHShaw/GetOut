@@ -1,13 +1,13 @@
 use Libraries.Interface.Controls.Button
 use Libraries.Data.Formats.JavaScriptObjectNotation
 use Libraries.Containers.HashTable
-use Libraries.Containers.Array
+use Libraries.Containers.HashTable
 use Libraries.Interface.Behaviors.Behavior
 
 class RoomItem is Button
 boolean canBePickedUp = false
 text role = ""
-Array<Behavior> behaviors
+HashTable<text, Behavior> behaviors
 
 action GetRole returns text
 return role
@@ -25,7 +25,7 @@ action SetCanBePickedUp(boolean canBePickedUp)
 me:canBePickedUp = canBePickedUp
 end
 
-action GetBehaviors returns Array<Behavior>
+action GetBehaviors returns HashTable<text, Behavior>
 return behaviors
 end
 
@@ -47,9 +47,11 @@ behaviorsJSON:Read(json:GetValue("behaviors"))
 
 // output("name: "+GetName()+", Description: "+GetDescription())
 //output("Behavior(s): ")
+
 counter = 0
 repeat while counter < behaviorsJSON:GetSize()
-me:behaviors:Add(behaviors:GetValue(behaviorsJSON:Get(counter):GetText()))
+text key = behaviorsJSON:Get(counter):GetText()
+me:behaviors:Set(key, behaviors:GetValue(key))
 counter = counter+1
 end
 

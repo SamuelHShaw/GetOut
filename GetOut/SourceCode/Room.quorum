@@ -11,6 +11,7 @@ use Libraries.Game.Graphics.Color
 use Libraries.Interface.Layouts.FlowLayout
 use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Behaviors.Behavior
 use Libraries.Containers.Array
 use Libraries.Containers.HashTable
 
@@ -22,6 +23,7 @@ text shortDescription = ""
 text longDescription = ""
 Color color
 Drawable roomItemsDrawable
+Drawable behaviorsDrawable
 Item2D firstFocusable
 Item2D currentFocusable
 
@@ -106,9 +108,11 @@ action MakeItemsArea returns Drawable
     itemArea:LoadFilledRectangle(100,50,color:White())
     itemArea:AddLayout(itemFlow)
 
+ShowBehaviorsBehavior showBehaviorsBehavior
 integer counter = 0
 repeat while counter < items:GetSize()
 RoomItem cur = items:Get(counter)
+    cur:SetBehavior(showBehaviorsBehavior)
     itemArea:Add(cur)
     AddToFocus(cur)
     counter = counter + 1
@@ -155,6 +159,7 @@ action MakeBehaviorsArea returns Drawable
     behaviorsArea:AddLayout(behaviorsFlowLayout)
   
     behaviorsArea:Resize()
+    behaviorsDrawable = behaviorsArea
   return behaviorsArea
 end
 
@@ -223,6 +228,22 @@ end
 action GenerateSummary returns text
 count = exits:GetSize()
 return "You are in "+name+". There are "+count+" exits out of here."
+end
+
+action ShowBehaviorsFor(RoomItem item)
+    HashTable<text, Behavior> behaviors = item:GetBehaviors()
+    Array<text> keys = behaviors:CopyToKeyArray()
+
+counter = 0
+repeat while counter < keys:GetSize()
+text key = keys:Get(counter)
+Button b
+b:Initialize(50, 50, key)
+b:SetBehavior(behaviors:GetValue(key))
+behaviorsDrawable:Add(b)
+    AddToFocus(b)
+counter = counter+1
+end
 end
 
 action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, RoomItem> items)

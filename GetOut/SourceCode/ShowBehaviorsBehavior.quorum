@@ -3,14 +3,16 @@ use Libraries.Interface.Events.BehaviorEvent
 use Libraries.Interface.Item
 use Libraries.Interface.Controls.Button
 use Libraries.Game.GameStateManager 
+use Libraries.Interface.Behaviors.Behavior
 
-class ChangeRoomBehavior is Behavior
+
+class ShowBehaviorsBehavior is Behavior
 
 GameStateManager gsm
 
     action Run(BehaviorEvent event) 
         Main game = cast(Main, gsm:GetGame())
-        Room room = cast(Room, event:GetItem())        
-        game:SetActiveRoom(room:GetName())
+        RoomItem item = cast(RoomItem, event:GetItem())        
+        game:GetActiveRoom():ShowBehaviorsFor(item)
     end
 end

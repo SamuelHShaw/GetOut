@@ -11,6 +11,7 @@ use Libraries.System.File
 class Main is Game
     text startRoom = "Sam's Bedroom"
     Character character
+    Room activeRoom
     HashTable<text, Room>rooms
     HashTable<text, RoomItem> items
 HashTable<text, Behavior> behaviors
@@ -120,15 +121,19 @@ SetActiveRoom(rooms:GetValue(roomName))
 end
 
 action SetActiveRoom(Room r)
-Room currentRoom = character:GetRoom()
-if currentRoom not= undefined
-Remove(currentRoom)
+if activeRoom not= undefined
+Remove(activeRoom)
 end
 
+activeRoom = r
 character:SetRoom(r)
 r:Render()
 Add(r)
 // r:Focus()
+end
+
+action GetActiveRoom returns Room
+return activeRoom
 end
 
 end
