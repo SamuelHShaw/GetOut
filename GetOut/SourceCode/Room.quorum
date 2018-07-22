@@ -241,6 +241,7 @@ RoomItemButton b
 b:Initialize(50, 50, key)
 b:SetRoomItem(item)
 b:SetBehavior(behaviors:GetValue(key))
+output("setting "+key+" behavior on "+b:GetName())
 behaviorsDrawable:Add(b)
     AddToFocus(b)
 counter = counter+1
