@@ -3,15 +3,21 @@
 "name": "Sam's Bedroom",
 "shortDescription": "",
 "longDescription": "",
-"items": ["Favorite Mug", "Sam's Desk"],
+"items": ["Favorite Mug", "Sam's Desk", "Jeans", "T-shirt", "ID Badge"],
 "exits": ["Hallway"]
 },
 {
 "name": "Hallway",
-"shortDescription": "",
-"longDescription": "",
-"items": [],
-"exits": ["Sam's Bedroom"]
+"shortDescription": "a way to the kitchen",
+"longDescription": "A dimly lit hallway leads to other parts of the dorm",
+"items": ["Chair"],
+"exits": ["Sam's Bedroom", "Kitchen"]
+},
+{
+"name": "Kitchen",
+"shortDescription": "a room with food and drink",
+"longDescription": "Gather food, water and beer here for your journey",
+"items": ["Apple", "Beer", "Water Glass"],
+"exits": ["Hallway"]
 }
-
 ]
