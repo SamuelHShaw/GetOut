@@ -22,12 +22,14 @@ text name = ""
 text shortDescription = ""
 text longDescription = ""
 text imagePath = ""
+text musicPath = ""
 Color color
 Drawable roomItemsDrawable
 Drawable behaviorsDrawable
 Drawable buttonStripDrawable
 Item2D firstFocusable
 Item2D currentFocusable
+MusicBehavior musicBehavior
 
 action Render
 MakeTextArea()
@@ -222,6 +224,10 @@ items:Remove(item)
 roomItemsDrawable:Remove(item)
 end
 
+action GetMusicPath returns text
+return musicPath
+end
+
 action GetRoomItems returns Array<RoomItem>
 return items
 end
@@ -278,6 +284,7 @@ me:name = json:GetValue("name")
 me:shortDescription = json:GetValue("shortDescription")
 me:longDescription = json:GetValue("longDescription")
 me:imagePath = json:GetValue("imagePath")
+me:musicPath = json:GetValue("musicPath")
 
 
 output(name+", Room:LoadFromJSON")
@@ -319,5 +326,13 @@ repeat while counter < me:items:GetSize()
 counter = counter+1
 end
 
+end
+
+action Open
+AddBehavior(musicBehavior)
+end
+
+action Close
+musicBehavior:SetFinished(true)
 end
 end

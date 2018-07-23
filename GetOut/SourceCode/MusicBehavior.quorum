@@ -1,0 +1,29 @@
+use Libraries.Interface.Behaviors.Behavior
+use Libraries.Interface.Events.BehaviorEvent
+use Libraries.Game.GameStateManager
+use Libraries.Sound.Audio
+
+class MusicBehavior is Behavior
+boolean finished = false
+Audio music
+
+    action Run(BehaviorEvent event) 
+        Room room = cast(Room, event:GetItem())
+        text path = room:GetMusicPath()
+music:LoadToStream(path)
+music:EnableLooping()
+music:Play()
+    end
+
+action Update(number seconds)
+music:Stream()
+end
+
+action IsFinished returns boolean
+return finished
+end
+
+action SetFinished(boolean f)
+finished = f
+end
+end
