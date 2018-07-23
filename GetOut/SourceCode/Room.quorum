@@ -14,6 +14,7 @@ use Libraries.Interface.Controls.TextBox
 use Libraries.Interface.Behaviors.Behavior
 use Libraries.Containers.Array
 use Libraries.Containers.HashTable
+use Libraries.Game.GameStateManager
 
 class Room is Drawable
 Array<text> exits
@@ -30,6 +31,7 @@ Drawable buttonStripDrawable
 Item2D firstFocusable
 Item2D currentFocusable
 MusicBehavior musicBehavior
+GameStateManager gsm
 
 action Render
 MakeTextArea()
@@ -222,6 +224,8 @@ end
 action RemoveRoomItem(RoomItem item)
 items:Remove(item)
 roomItemsDrawable:Remove(item)
+Remove(behaviorsDrawable)
+Resize()
 end
 
 action GetMusicPath returns text
@@ -330,9 +334,30 @@ end
 
 action Open
 AddBehavior(musicBehavior)
+
+Main game = cast(Main, gsm:GetGame())
+Array<RoomItem> items = game:GetCharacter():GetRoomItems()
+counter = 0
+repeat while counter < items:GetSize()
+roomItemsDrawable:Add(items:Get(counter))
+counter = counter+1
+end
+Resize()
+
 end
 
 action Close
 musicBehavior:SetFinished(true)
+
+Main game = cast(Main, gsm:GetGame())
+Array<RoomItem> items = game:GetCharacter():GetRoomItems()
+counter = 0
+repeat while counter < items:GetSize()
+roomItemsDrawable:Remove(items:Get(0))
+counter = counter+1
 end
+Resize()
+end
+
+
 end
