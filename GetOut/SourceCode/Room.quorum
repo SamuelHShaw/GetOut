@@ -99,13 +99,15 @@ Drawable behaviorsArea = MakeBehaviorsArea()
     FlowLayout buttonStripFlowLayout
     buttonStripFlowLayout:SetPercentageWidth(1)
     buttonStripFlowLayout:SetPercentageHeight(0.5)
+    buttonStripFlowLayout:SetPadding(50)
 
-    Drawable buttonStrip
+    ButtonStrip buttonStrip
     buttonStrip:AddLayout(buttonStripFlowLayout)
 
     buttonStrip:Add(exitsArea)
     buttonStrip:Add(itemsArea)
     buttonStrip:Add(behaviorsArea)
+    buttonStrip:Set(exitsArea, itemsArea, behaviorsArea)
 
     buttonStrip:Resize()
 buttonStripDrawable = buttonStrip
@@ -124,7 +126,7 @@ action MakeItemsArea returns Drawable
     FlowLayout itemFlow
     itemFlow:SetPercentageWidth(0.33)
     itemFlow:SetPercentageHeight(1.0)
-    itemFlow:SetPercentageX(0.33)
+//    itemFlow:SetPercentageX(0)
 
     Drawable itemArea
     itemArea:AddLayout(itemFlow)
@@ -171,8 +173,8 @@ action MakeBehaviorsArea returns Drawable
     FlowLayout behaviorsFlowLayout
     behaviorsFlowLayout:SetPercentageWidth(0.33)
     behaviorsFlowLayout:SetPercentageHeight(1.0)
-    behaviorsFlowLayout:SetPercentageX(1.0)
-    behaviorsFlowLayout:SetPercentageOriginX(1.0)
+//    behaviorsFlowLayout:SetPercentageX(1.0)
+//    behaviorsFlowLayout:SetPercentageOriginX(1.0)
 
     Drawable behaviorsArea
     behaviorsArea:AddLayout(behaviorsFlowLayout)
