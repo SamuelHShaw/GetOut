@@ -32,18 +32,21 @@ end
     end
 
     action CreateGame
-
-Drawable background
-File backgroundFile
-backgroundFile:SetPath("assets/metal.jpg")
-background:Load(backgroundFile)
-Add(background)
-
-InitializeBehaviors()
+        InitializeBackground()
+        InitializeBehaviors()
         InitializeCharacter()
         InitializeItems()
         InitializeRooms()
     end
+
+action InitializeBackground
+    Drawable background
+    File backgroundFile
+    backgroundFile:SetPath("assets/metal.jpg")
+    background:Load(backgroundFile)
+    background:Scale(1.5)
+    Add(background)
+end
 
 action InitializeBehaviors
 PickUpBehavior pickUpBehavior

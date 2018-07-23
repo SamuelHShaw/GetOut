@@ -61,7 +61,7 @@ action MakeTextArea
     textBoxLayout:SetPercentageWidth(0.25)
     
 TextBox textBox
-textBox:Initialize(300, 300, color:White(), "Enter text in this TextBox.")
+textBox:Initialize(400, 300, color:White(), "Enter text in this TextBox.")
 SetFirstFocus(textBox)
 textBox:AddLayout(textBoxLayout)
 textBox:Resize()
