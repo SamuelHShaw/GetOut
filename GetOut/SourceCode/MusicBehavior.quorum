@@ -29,7 +29,7 @@ end
 
 action SetFinished(boolean f)
 finished = f
-if finished
+if finished and music:IsLoaded()
 music:Dispose()
 end
 
