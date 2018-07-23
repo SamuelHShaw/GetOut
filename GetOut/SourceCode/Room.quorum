@@ -116,7 +116,6 @@ action MakeItemsArea returns Drawable
     itemFlow:SetPercentageX(0.33)
 
     Drawable itemArea
-    itemArea:LoadFilledRectangle(100,50,color:White())
     itemArea:AddLayout(itemFlow)
 
 ShowBehaviorsBehavior showBehaviorsBehavior
@@ -140,7 +139,6 @@ action MakeExitsArea returns Drawable
     exitFlowLayout:SetPercentageHeight(1.0)
 
     Drawable exitArea
-    exitArea:LoadFilledRectangle(100,50,color:White())
     exitArea:AddLayout(exitFlowLayout)
 
 ChangeRoomBehavior changeRoomBehavior
@@ -162,7 +160,9 @@ action MakeBehaviorsArea returns Drawable
     FlowLayout behaviorsFlowLayout
     behaviorsFlowLayout:SetPercentageWidth(0.33)
     behaviorsFlowLayout:SetPercentageHeight(1.0)
-    behaviorsFlowLayout:SetPercentageX(0.66)
+    behaviorsFlowLayout:SetPercentageX(1.0)
+    behaviorsFlowLayout:SetPercentageOriginX(1.0)
+
 
     Drawable behaviorsArea
     behaviorsArea:AddLayout(behaviorsFlowLayout)
