@@ -53,11 +53,11 @@ action ModEnergy(integer e)
 end
 
 action GainEnergy
-    ModEnergy(10)
+    ModEnergy(40)
 end
 
 action LoseEnergy
-    ModEnergy(-1)
+    ModEnergy(-2)
 end
 
 action IsWearingClothing() returns boolean
