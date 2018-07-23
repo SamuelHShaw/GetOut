@@ -6,6 +6,7 @@ use Libraries.Containers.HashTable
 use Libraries.Game.DesktopConfiguration
 use Libraries.Data.Formats.JavaScriptObjectNotation
 use Libraries.System.File
+use Libraries.Sound.Audio
 
 // A text based game to escape a TSBVI dorm
 
@@ -16,6 +17,7 @@ class Main is Game
     HashTable<text, Room>rooms
     HashTable<text, RoomItem> items
 HashTable<text, Behavior> behaviors
+Audio heart
 
 action GetCharacter returns Character
 return character
@@ -98,6 +100,9 @@ end
 
 action InitializeCharacter
 character:SetName("Sam")
+heart:LoadToStream("assets/heartbeat.wav")
+heart:SetVolume(0.5)
+heart:Play()
 end
 
 number second = 0.0
@@ -112,7 +117,13 @@ second = 0.0
 SecondPassed()
 end
 
+HandleAudio()
     end
+
+action HandleAudio
+heart:Stream()
+heart:SetPitch((character:GetEnergy()/100)+1)
+end
 
 action SecondPassed
 character:RunChecks()
