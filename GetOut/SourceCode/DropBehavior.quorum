@@ -2,12 +2,15 @@ use Libraries.Interface.Behaviors.Behavior
 use Libraries.Interface.Events.BehaviorEvent
 use Libraries.Interface.Item
 use Libraries.Game.GameStateManager 
+use Libraries.Sound.Audio
 
 class DropBehavior is Behavior
-
 GameStateManager gsm
 
     action Run(BehaviorEvent event) 
+        Audio sound
+        sound:Load("assets/putDown.ogg")
+sound:Play()
 
         Main game = cast(Main, gsm:GetGame())
         Character character = game:GetCharacter()
