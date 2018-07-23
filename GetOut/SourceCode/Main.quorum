@@ -7,6 +7,7 @@ use Libraries.Game.DesktopConfiguration
 use Libraries.Data.Formats.JavaScriptObjectNotation
 use Libraries.System.File
 use Libraries.Sound.Audio
+use Libraries.Game.Graphics.Drawable
 
 // A text based game to escape a TSBVI dorm
 
@@ -31,6 +32,13 @@ end
     end
 
     action CreateGame
+
+Drawable background
+File backgroundFile
+backgroundFile:SetPath("assets/metal.jpg")
+background:Load(backgroundFile)
+Add(background)
+
 InitializeBehaviors()
         InitializeCharacter()
         InitializeItems()
