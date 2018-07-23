@@ -6,8 +6,11 @@ use Libraries.Sound.Audio
 class MusicBehavior is Behavior
 boolean finished = false
 Audio music
+GameStateManager gsm
+Main game = undefined
 
     action Run(BehaviorEvent event) 
+        game = cast(Main, gsm:GetGame())
         Room room = cast(Room, event:GetItem())
         text path = room:GetMusicPath()
 music:LoadToStream(path)
@@ -16,6 +19,7 @@ music:Play()
     end
 
 action Update(number seconds)
+music:SetVolume(1.0-game:GetHeartVolume())
 music:Stream()
 end
 

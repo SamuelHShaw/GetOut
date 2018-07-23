@@ -139,10 +139,10 @@ end
 action GenerateAudio
 Math math
 number twoPI = math:pi*2
-number carrierFrequency = 600 // Frequency of Carrier wave
-number modulatorFrequency = 15
+number carrierFrequency = 200 // Frequency of Carrier wave
+number modulatorFrequency = 3+(10-(character:GetEnergy()/10.0))
 number carrierAmplitude = 1 // Amplitude of Carrier wave
-number modulatorAmplitude = 20 
+number modulatorAmplitude = 5 
 
 AudioSamples fmWave
 fmWave:SetChannels(1)
@@ -158,11 +158,12 @@ repeat while counter < fmWave:GetSize()
 end
 
 if heart:IsLoaded()
+heart:SetVolume( 1.0-(character:GetEnergy()/100.0))
 heart:AddToQueue(fmWave)
 heart:Play()
 else
 heart:LoadToStream(fmWave)
-heart:SetVolume(0.3)
+heart:SetVolume(0.0)
 heart:Play()
 end
 
@@ -188,6 +189,10 @@ end
 
 action GetActiveRoom returns Room
 return activeRoom
+end
+
+action GetHeartVolume returns number
+return heart:GetVolume()
 end
 
 end
