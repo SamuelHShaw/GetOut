@@ -12,7 +12,7 @@
 "name": "LivingRoom",
 "shortDescription": "a standard living room",
 "longDescription": "A dimly lit living room has chairs, couches and leads to other parts of the dorm",
-"items": ["Chair"],
+"items": ["Chips"],
 "exits": ["Sam's Bedroom", "LivingRoom", "Kitchen"],
 "imagePath": "assets/livingRoom.jpg",
 "musicPath": "assets/livingRoom.ogg"
@@ -21,7 +21,7 @@
 "name": "Kitchen",
 "shortDescription": "a room with food and drink",
 "longDescription": "Gather food, water and beer here for your journey",
-"items": ["Apple", "Beer", "Water Glass"],
+"items": ["Apple", "Beer", "Water Glass", "Beef Brisket", "Ham Sandwhich"],
 "exits": ["LivingRoom"],
 "imagePath": "assets/kitchen.jpg",
 "musicPath": "assets/kitchen.ogg"

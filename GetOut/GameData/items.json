@@ -86,7 +86,35 @@
 {
 "name": "Apple",
 "description": "A green appkle",
-"role": "drink",
+"role": "food",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop", "Eat"]
+},
+{
+"name": "Granola Bar",
+"description": "A nutrigrain bar",
+"role": "food",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop", "Eat"]
+},
+{
+"name": "Beef Brisket",
+"description": "Austin BBQ beef brisket, fatty and moist",
+"role": "food",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop", "Eat"]
+},
+{
+"name": "Chips",
+"description": "Tortilla chips",
+"role": "food",
+"canBePickedUp": true,
+"behaviors": ["PickUp", "Drop", "Eat"]
+},
+{
+"name": "Ham Sandwhich",
+"description": "a large dagwood sanwhich",
+"role": "food",
 "canBePickedUp": true,
 "behaviors": ["PickUp", "Drop", "Eat"]
 }
