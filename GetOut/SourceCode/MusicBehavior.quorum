@@ -29,5 +29,9 @@ end
 
 action SetFinished(boolean f)
 finished = f
+if finished
+music:Dispose()
+end
+
 end
 end
