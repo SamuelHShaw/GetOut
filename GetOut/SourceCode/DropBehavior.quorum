@@ -10,7 +10,7 @@ GameStateManager gsm
     action Run(BehaviorEvent event) 
         Audio sound
         sound:Load("assets/putDown.ogg")
-sound:Play()
+sound:PlayUntilDone()
 
         Main game = cast(Main, gsm:GetGame())
         Character character = game:GetCharacter()
