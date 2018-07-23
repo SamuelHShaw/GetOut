@@ -108,10 +108,10 @@ Drawable behaviorsArea = MakeBehaviorsArea()
     buttonStrip:Resize()
 buttonStripDrawable = buttonStrip
 
-output("bs: "+buttonStrip:GetGlobalX()+", "+buttonStrip:GetGlobalY()+", "+buttonStrip:GetWidth())
-output("ea: "+exitsArea:GetGlobalX()+", "+exitsArea:GetGlobalY()+", "+exitsArea:GetWidth())
-output("ia: "+itemsArea:GetGlobalX()+", "+itemsArea:GetGlobalY()+", "+itemsArea:GetWidth())
-output("ba: "+behaviorsArea:GetGlobalX()+", "+behaviorsArea:GetGlobalY()+", "+behaviorsArea:GetWidth())
+//output("bs: "+buttonStrip:GetGlobalX()+", "+buttonStrip:GetGlobalY()+", "+buttonStrip:GetWidth())
+//output("ea: "+exitsArea:GetGlobalX()+", "+exitsArea:GetGlobalY()+", "+exitsArea:GetWidth())
+//output("ia: "+itemsArea:GetGlobalX()+", "+itemsArea:GetGlobalY()+", "+itemsArea:GetWidth())
+//output("ba: "+behaviorsArea:GetGlobalX()+", "+behaviorsArea:GetGlobalY()+", "+behaviorsArea:GetWidth())
 
 
 

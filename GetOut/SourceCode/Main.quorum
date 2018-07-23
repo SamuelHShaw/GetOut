@@ -102,7 +102,7 @@ action InitializeCharacter
 character:SetName("Sam")
 heart:LoadToStream("assets/heartbeat.wav")
 heart:EnableLooping()
-heart:SetVolume(0.5)
+heart:SetVolume(1.0)
 heart:Play()
 end
 
@@ -118,16 +118,13 @@ second = 0.0
 SecondPassed()
 end
 
-HandleAudio()
     end
 
-action HandleAudio
-heart:Stream()
-heart:SetPitch((character:GetEnergy()/100)+1)
-end
-
 action SecondPassed
+heart:Stream()
+character:LoseEnergy()
 character:RunChecks()
+heart:SetPitch(character:GetEnergy()/100.0)
 end
 
 action SetActiveRoom(text roomName)
