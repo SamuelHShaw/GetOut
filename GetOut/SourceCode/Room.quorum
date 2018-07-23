@@ -335,6 +335,7 @@ end
 action Open
 AddBehavior(musicBehavior)
 
+/*
 Main game = cast(Main, gsm:GetGame())
 Array<RoomItem> items = game:GetCharacter():GetRoomItems()
 counter = 0
@@ -343,12 +344,13 @@ roomItemsDrawable:Add(items:Get(counter))
 counter = counter+1
 end
 Resize()
-
+*/
 end
 
 action Close
 musicBehavior:SetFinished(true)
 
+/*
 Main game = cast(Main, gsm:GetGame())
 Array<RoomItem> items = game:GetCharacter():GetRoomItems()
 counter = 0
@@ -357,7 +359,7 @@ roomItemsDrawable:Remove(items:Get(0))
 counter = counter+1
 end
 Resize()
+*/
 end
-
 
 end
