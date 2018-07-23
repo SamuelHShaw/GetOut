@@ -4,7 +4,7 @@
 "shortDescription": "A TSBVI bedroom",
 "longDescription": "A bedroom with items scattered around",
 "items": ["Favorite Mug", "Sam's Desk", "Jeans", "T-shirt", "ID Badge"],
-"exits": ["Hallway"],
+"exits": ["LivingRoom"],
 "imagePath": "assets/samRoom.jpg"
 },
 {
@@ -20,7 +20,7 @@
 "shortDescription": "a room with food and drink",
 "longDescription": "Gather food, water and beer here for your journey",
 "items": ["Apple", "Beer", "Water Glass"],
-"exits": ["Hallway"],
+"exits": ["LivingRoom"],
 "imagePath": "assets/kitchen.jpg"
 }
 ]

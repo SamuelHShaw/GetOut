@@ -35,7 +35,7 @@ end
 
 action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, Behavior> behaviors)
 // I don't like having this here, but Initialize concept sucks right now
-Initialize(50, 50, "Item Button")
+Initialize(100, 100, "Item Button")
 
 role = json:GetValue("role")
 canBePickedUp = json:GetBoolean("canBePickedUp")

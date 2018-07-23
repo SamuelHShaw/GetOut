@@ -86,6 +86,7 @@ repeat while counter < json:GetSize()
 Room room
 room:LoadFromJSON(json:Get(counter), items)
 room:AddLayout(roomLayout)
+room:Render()
 rooms:Set(room:GetName(), room)
 counter = counter+1
 end
@@ -127,7 +128,6 @@ end
 
 activeRoom = r
 character:SetRoom(r)
-r:Render()
 Add(r)
  r:Focus()
 end

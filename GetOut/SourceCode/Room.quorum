@@ -92,15 +92,15 @@ Drawable itemsArea = MakeItemsArea()
 Drawable behaviorsArea = MakeBehaviorsArea()
 
     FlowLayout buttonStripFlowLayout
-    buttonStripFlowLayout:SetPercentageWidth(0.5)
-    buttonStripFlowLayout:SetPercentageHeight(0.25)
+    buttonStripFlowLayout:SetPercentageWidth(1)
+    buttonStripFlowLayout:SetPercentageHeight(0.5)
 
     Drawable buttonStrip
-    buttonStrip:LoadFilledRectangle(500,100,color:Blue())
+//    buttonStrip:LoadFilledRectangle(1000,1000,color:Blue())
     buttonStrip:AddLayout(buttonStripFlowLayout)
 
-    buttonStrip:Add(itemsArea)
     buttonStrip:Add(exitsArea)
+    buttonStrip:Add(itemsArea)
     buttonStrip:Add(behaviorsArea)
 
     buttonStrip:Resize()
@@ -109,8 +109,9 @@ end
 
 action MakeItemsArea returns Drawable
     FlowLayout itemFlow
-    itemFlow:SetPercentageWidth(0.4)
+    itemFlow:SetPercentageWidth(0.33)
     itemFlow:SetPercentageHeight(1.0)
+    itemFlow:SetPercentageX(0.33)
 
     Drawable itemArea
     itemArea:LoadFilledRectangle(100,50,color:White())
@@ -133,9 +134,8 @@ end
 
 action MakeExitsArea returns Drawable
     FlowLayout exitFlowLayout
-    exitFlowLayout:SetPercentageWidth(0.25)
+    exitFlowLayout:SetPercentageWidth(0.33)
     exitFlowLayout:SetPercentageHeight(1.0)
-    exitFlowLayout:SetPercentageX(0.6)
 
     Drawable exitArea
     exitArea:LoadFilledRectangle(100,50,color:White())
@@ -145,7 +145,7 @@ ChangeRoomBehavior changeRoomBehavior
 counter = 0
 repeat while counter < exits:GetSize()
 Button b
-b:Initialize(50, 50, exits:Get(counter))
+b:Initialize(100, 100, exits:Get(counter))
 b:SetBehavior(changeRoomBehavior)
 exitArea:Add(b)
     AddToFocus(b)
@@ -158,9 +158,9 @@ end
 
 action MakeBehaviorsArea returns Drawable
     FlowLayout behaviorsFlowLayout
-    behaviorsFlowLayout:SetPercentageWidth(0.25)
+    behaviorsFlowLayout:SetPercentageWidth(0.33)
     behaviorsFlowLayout:SetPercentageHeight(1.0)
-    behaviorsFlowLayout:SetPercentageX(0.6)
+    behaviorsFlowLayout:SetPercentageX(0.66)
 
     Drawable behaviorsArea
     behaviorsArea:LoadFilledRectangle(100,50,color:White())
@@ -248,7 +248,7 @@ counter = 0
 repeat while counter < keys:GetSize()
 text key = keys:Get(counter)
 RoomItemButton b
-b:Initialize(50, 50, key)
+b:Initialize(100, 100, key)
 b:SetRoomItem(item)
 b:SetBehavior(behaviors:GetValue(key))
 output("setting "+key+" behavior on "+b:GetName())
@@ -256,7 +256,7 @@ behaviorsDrawable:Add(b)
     AddToFocus(b)
 counter = counter+1
 end
-    behaviorsDrawable:Resize()
+    Resize()
 end
 
 action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, RoomItem> items)
