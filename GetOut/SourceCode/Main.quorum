@@ -72,10 +72,6 @@ end
 end
 
 action InitializeRooms
-Layout roomLayout
-roomLayout:SetPercentageHeight(1.0)
-roomLayout:SetPercentageWidth(1.0)
-
 File roomsFile
 roomsFile:SetPath("GameData/rooms.json")
 JavaScriptObjectNotation json
@@ -83,6 +79,10 @@ json:Read(roomsFile)
 
 counter = 0
 repeat while counter < json:GetSize()
+Layout roomLayout
+roomLayout:SetPercentageHeight(1.0)
+roomLayout:SetPercentageWidth(1.0)
+
 Room room
 room:LoadFromJSON(json:Get(counter), items)
 room:AddLayout(roomLayout)
