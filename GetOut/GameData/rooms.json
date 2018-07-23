@@ -1,23 +1,26 @@
 [
 {
 "name": "Sam's Bedroom",
-"shortDescription": "",
-"longDescription": "",
+"shortDescription": "A TSBVI bedroom",
+"longDescription": "A bedroom with items scattered around",
 "items": ["Favorite Mug", "Sam's Desk", "Jeans", "T-shirt", "ID Badge"],
-"exits": ["Hallway"]
+"exits": ["Hallway"],
+"image": "assets/samRoom.jpg"
 },
 {
-"name": "Hallway",
+"name": "LivingRoom",
 "shortDescription": "a way to the kitchen",
-"longDescription": "A dimly lit hallway leads to other parts of the dorm",
+"longDescription": "A dimly lit living room has chairs, couches and leads to other parts of the dorm",
 "items": ["Chair"],
-"exits": ["Sam's Bedroom", "Kitchen"]
+"exits": ["Sam's Bedroom", "Kitchen"],
+"image": "assets/livingRoom.jpg"
 },
 {
 "name": "Kitchen",
 "shortDescription": "a room with food and drink",
 "longDescription": "Gather food, water and beer here for your journey",
 "items": ["Apple", "Beer", "Water Glass"],
-"exits": ["Hallway"]
+"exits": ["Hallway"],
+"image": "assets/kitchen.jpg"
 }
 ]
