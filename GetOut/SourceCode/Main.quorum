@@ -129,7 +129,7 @@ activeRoom = r
 character:SetRoom(r)
 r:Render()
 Add(r)
-// r:Focus()
+ r:Focus()
 end
 
 action GetActiveRoom returns Room
