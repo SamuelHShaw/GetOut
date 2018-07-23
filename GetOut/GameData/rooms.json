@@ -5,7 +5,7 @@
 "longDescription": "A bedroom with items scattered around",
 "items": ["Favorite Mug", "Sam's Desk", "Jeans", "T-shirt", "ID Badge"],
 "exits": ["Hallway"],
-"image": "assets/samRoom.jpg"
+"imagePath": "assets/samRoom.jpg"
 },
 {
 "name": "LivingRoom",
@@ -13,7 +13,7 @@
 "longDescription": "A dimly lit living room has chairs, couches and leads to other parts of the dorm",
 "items": ["Chair"],
 "exits": ["Sam's Bedroom", "Kitchen"],
-"image": "assets/livingRoom.jpg"
+"imagePath": "assets/livingRoom.jpg"
 },
 {
 "name": "Kitchen",
@@ -21,6 +21,6 @@
 "longDescription": "Gather food, water and beer here for your journey",
 "items": ["Apple", "Beer", "Water Glass"],
 "exits": ["Hallway"],
-"image": "assets/kitchen.jpg"
+"imagePath": "assets/kitchen.jpg"
 }
 ]

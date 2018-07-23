@@ -177,11 +177,11 @@ action SetFirstFocus(Item2D item)
     item:SetFocusable(true)
 firstFocusable = item
 currentFocusable = item
-output("first focus: "+item:GetName())
+//output("first focus: "+item:GetName())
 end
 
 action AddToFocus(Item2D item)
-output("add to focus: "+item:GetName())
+//output("add to focus: "+item:GetName())
     item:SetFocusable(true)
     item:SetPreviousFocus(currentFocusable)
     item:SetNextFocus(firstFocusable)
