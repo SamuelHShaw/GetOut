@@ -80,7 +80,7 @@ json:Read(roomsFile)
 
 counter = 0
 repeat while counter < json:GetSize()
-FlowLayout roomLayout
+Layout roomLayout
 roomLayout:SetPercentageHeight(1.0)
 roomLayout:SetPercentageWidth(1.0)
 
