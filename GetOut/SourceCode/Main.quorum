@@ -1,3 +1,5 @@
+use Libraries.Compute.Math
+use Libraries.Sound.AudioSamples
 use Libraries.Interface.Behaviors.Behavior
 use Libraries.Game.Game
 use Libraries.Interface.Layouts.Layout
@@ -111,10 +113,7 @@ end
 
 action InitializeCharacter
 character:SetName("Sam")
-heart:LoadToStream("assets/heartbeat.wav")
-heart:EnableLooping()
-heart:SetVolume(1.0)
-heart:Play()
+GenerateAudio()
 end
 
 number second = 0.0
@@ -128,14 +127,44 @@ if second >= 1.0
 second = 0.0
 SecondPassed()
 end
-
+heart:Stream()
     end
 
 action SecondPassed
-heart:Stream()
+GenerateAudio()
 character:LoseEnergy()
 character:RunChecks()
-heart:SetPitch(character:GetEnergy()/100.0)
+end
+
+action GenerateAudio
+Math math
+number twoPI = math:pi*2
+number carrierFrequency = 600 // Frequency of Carrier wave
+number modulatorFrequency = 15
+number carrierAmplitude = 1 // Amplitude of Carrier wave
+number modulatorAmplitude = 20 
+
+AudioSamples fmWave
+fmWave:SetChannels(1)
+fmWave:SetSizeInSeconds(1.0)
+
+number sampleSize = fmWave:GetSamplesPerSecond()
+integer counter = 0
+repeat while counter < fmWave:GetSize()
+   number modulatorWave = modulatorAmplitude * math:Sine(modulatorFrequency * twoPI * counter/sampleSize) // Modulator Wave
+   number f = carrierAmplitude * math:Sine(carrierFrequency * twoPI * counter/sampleSize + modulatorWave) // FM Modulated wave
+   fmWave:Set(counter, f, 0)
+   counter = counter + 1
+end
+
+if heart:IsLoaded()
+heart:AddToQueue(fmWave)
+heart:Play()
+else
+heart:LoadToStream(fmWave)
+heart:Play()
+end
+
 end
 
 action SetActiveRoom(text roomName)
