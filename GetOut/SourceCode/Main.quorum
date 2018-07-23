@@ -86,8 +86,8 @@ roomLayout:SetPercentageWidth(1.0)
 Room room
 room:LoadFromJSON(json:Get(counter), items)
 room:AddLayout(roomLayout)
-room:Render()
 rooms:Set(room:GetName(), room)
+room:Render()
 counter = counter+1
 end
 

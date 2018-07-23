@@ -25,6 +25,7 @@ text imagePath = ""
 Color color
 Drawable roomItemsDrawable
 Drawable behaviorsDrawable
+Drawable buttonStripDrawable
 Item2D firstFocusable
 Item2D currentFocusable
 
@@ -104,6 +105,7 @@ Drawable behaviorsArea = MakeBehaviorsArea()
     buttonStrip:Add(behaviorsArea)
 
     buttonStrip:Resize()
+buttonStripDrawable = buttonStrip
     Add(buttonStrip)
 end
 
@@ -163,7 +165,6 @@ action MakeBehaviorsArea returns Drawable
     behaviorsFlowLayout:SetPercentageX(0.66)
 
     Drawable behaviorsArea
-    behaviorsArea:LoadFilledRectangle(100,50,color:White())
     behaviorsArea:AddLayout(behaviorsFlowLayout)
   
     behaviorsArea:Resize()
@@ -241,6 +242,13 @@ return "You are in "+name+". There are "+count+" exits out of here."
 end
 
 action ShowBehaviorsFor(RoomItem item)
+if behaviorsDrawable not= undefined
+    buttonStripDrawable:Remove(behaviorsDrawable)
+    MakeBehaviorsArea()
+   buttonStripDrawable :Add(behaviorsDrawable)
+    buttonStripDrawable:Resize()
+end
+
     HashTable<text, Behavior> behaviors = item:GetBehaviors()
     Array<text> keys = behaviors:CopyToKeyArray()
 
@@ -248,10 +256,10 @@ counter = 0
 repeat while counter < keys:GetSize()
 text key = keys:Get(counter)
 RoomItemButton b
-b:Initialize(100, 100, key)
+b:Initialize(80, 80, key)
 b:SetRoomItem(item)
 b:SetBehavior(behaviors:GetValue(key))
-output("setting "+key+" behavior on "+b:GetName())
+//output("setting "+key+" behavior on "+b:GetName())
 behaviorsDrawable:Add(b)
     AddToFocus(b)
 counter = counter+1
