@@ -101,6 +101,7 @@ end
 action InitializeCharacter
 character:SetName("Sam")
 heart:LoadToStream("assets/heartbeat.wav")
+heart:EnableLooping()
 heart:SetVolume(0.5)
 heart:Play()
 end
