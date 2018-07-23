@@ -21,6 +21,7 @@ Array<RoomItem> items
 text name = ""
 text shortDescription = ""
 text longDescription = ""
+text imagePath = ""
 Color color
 Drawable roomItemsDrawable
 Drawable behaviorsDrawable
@@ -31,12 +32,19 @@ action Render
 MakeTextArea()
 MakeImageArea()
 MakeButtonStrip()
+SetFocusable(true)
+
+/*
+Item cur = cast(Item, firstFocusable)
+repeat while cur:GetNextFocus() not= cast(Item, firstFocusable)
+output("cur: "+cur:GetName())
+cur = cur:GetNextFocus()
+end
+*/
 end
 
 action Focus
-TextBox box
-box = cast(TextBox, firstFocusable)
-box:Focus()
+    firstFocusable:Focus()
 end
 
 action MakeTextArea
@@ -67,7 +75,7 @@ imageAreaLayout:SetPercentageHeight(0.5)
 // todo: add border
 
 Texture texture
-texture:LoadFromFile("assets/elenaPainting.jpg")
+texture:LoadFromFile(imagePath)
 
 Drawable imageArea
 imageArea:Load(texture)
@@ -169,9 +177,11 @@ action SetFirstFocus(Item2D item)
     item:SetFocusable(true)
 firstFocusable = item
 currentFocusable = item
+output("first focus: "+item:GetName())
 end
 
 action AddToFocus(Item2D item)
+output("add to focus: "+item:GetName())
     item:SetFocusable(true)
     item:SetPreviousFocus(currentFocusable)
     item:SetNextFocus(firstFocusable)
@@ -253,6 +263,8 @@ action LoadFromJSON(JavaScriptObjectNotation json, HashTable<text, RoomItem> ite
 me:name = json:GetValue("name")
 me:shortDescription = json:GetValue("shortDescription")
 me:longDescription = json:GetValue("longDescription")
+me:imagePath = json:GetValue("imagePath")
+
 
 output(name+", Room:LoadFromJSON")
 JavaScriptObjectNotation exitNames
