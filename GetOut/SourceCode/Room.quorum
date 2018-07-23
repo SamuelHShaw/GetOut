@@ -61,7 +61,7 @@ action MakeTextArea
     textBoxLayout:SetPercentageWidth(0.25)
     
 TextBox textBox
-textBox:Initialize(400, 300, color:White(), "Enter text in this TextBox.")
+textBox:Initialize(400, 300, color:White(), GenerateSummary())
 SetFirstFocus(textBox)
 textBox:AddLayout(textBoxLayout)
 textBox:Resize()
@@ -251,8 +251,7 @@ me:longDescription = longDescription
 end
 
 action GenerateSummary returns text
-count = exits:GetSize()
-return "You are in "+name+". There are "+count+" exits out of here."
+return "You are in "+name+", "+shortDescription+". There are "+exits:GetSize()+" exits out of here."+" "+longDescription+". There are "+items:GetSize()+" items for you to explore."
 end
 
 action ShowBehaviorsFor(RoomItem item)
