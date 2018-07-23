@@ -13,7 +13,7 @@
 "shortDescription": "a standard living room",
 "longDescription": "A dimly lit living room has chairs, couches and leads to other parts of the dorm",
 "items": ["Chips"],
-"exits": ["Sam's Bedroom", "LivingRoom", "Kitchen"],
+"exits": ["Sam's Bedroom", "LivingRoom", "Kitchen","Front door"],
 "imagePath": "assets/livingRoom.jpg",
 "musicPath": "assets/livingRoom.ogg"
 },
@@ -25,5 +25,13 @@
 "exits": ["LivingRoom"],
 "imagePath": "assets/kitchen.jpg",
 "musicPath": "assets/kitchen.ogg"
+},
+{
+"name": "Front door",
+"shortDescription": "a portal to the outside world",
+"longDescription": "Make sure you have all you'll need to survive before you exit",
+"items": [],
+"exits": ["LivingRoom"],
+"imagePath": "assets/frontDoor.jpg",
 }
 ]
