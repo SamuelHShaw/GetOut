@@ -97,7 +97,6 @@ Drawable behaviorsArea = MakeBehaviorsArea()
     buttonStripFlowLayout:SetPercentageHeight(0.5)
 
     Drawable buttonStrip
-//    buttonStrip:LoadFilledRectangle(1000,1000,color:Blue())
     buttonStrip:AddLayout(buttonStripFlowLayout)
 
     buttonStrip:Add(exitsArea)
@@ -162,7 +161,6 @@ action MakeBehaviorsArea returns Drawable
     behaviorsFlowLayout:SetPercentageHeight(1.0)
     behaviorsFlowLayout:SetPercentageX(1.0)
     behaviorsFlowLayout:SetPercentageOriginX(1.0)
-
 
     Drawable behaviorsArea
     behaviorsArea:AddLayout(behaviorsFlowLayout)
