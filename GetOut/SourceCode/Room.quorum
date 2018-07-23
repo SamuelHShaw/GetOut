@@ -224,10 +224,6 @@ end
 action RemoveRoomItem(RoomItem item)
 items:Remove(item)
 roomItemsDrawable:Remove(item)
-if behaviorsDrawable not= undefined
-Remove(behaviorsDrawable)
-Resize()
-end
 end
 
 action GetMusicPath returns text
