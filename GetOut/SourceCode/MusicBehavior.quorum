@@ -8,17 +8,26 @@ boolean finished = false
 Audio music
 GameStateManager gsm
 Main game = undefined
+text path = ""
 
     action Run(BehaviorEvent event) 
         game = cast(Main, gsm:GetGame())
         Room room = cast(Room, event:GetItem())
-        text path = room:GetMusicPath()
+        path = room:GetMusicPath()
+        InitialPlay()
+    end
+
+action InitialPlay
 music:LoadToStream(path)
 music:EnableLooping()
 music:Play()
-    end
+end
 
 action Update(number seconds)
+if not music:IsLoaded()
+InitialPlay()
+end
+
 music:SetVolume(1.0-game:GetHeartVolume())
 music:Stream()
 end
