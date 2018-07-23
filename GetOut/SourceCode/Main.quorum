@@ -162,6 +162,7 @@ heart:AddToQueue(fmWave)
 heart:Play()
 else
 heart:LoadToStream(fmWave)
+heart:SetVolume(0.3)
 heart:Play()
 end
 
@@ -174,12 +175,14 @@ end
 
 action SetActiveRoom(Room r)
 if activeRoom not= undefined
+activeRoom:Close()
 Remove(activeRoom)
 end
 
 activeRoom = r
 character:SetRoom(r)
 Add(r)
+r:Open()
  r:Focus()
 end
 
